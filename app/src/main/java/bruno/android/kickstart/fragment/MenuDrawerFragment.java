@@ -1,5 +1,6 @@
 package bruno.android.kickstart.fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
@@ -19,8 +20,26 @@ public class MenuDrawerFragment extends ListFragment {
     MenuListener menuListener;
 
     @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            menuListener = (MenuListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException("Activity must implement MenuListener.");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        menuListener = null;
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(bruno.android.PartoHumanizado.R.layout.fragment_navigation_drawer, null);
+        return view;
+//        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
@@ -36,11 +55,14 @@ public class MenuDrawerFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        MenuDrawerAdapter.DrawerItem item = menuDrawerAdapter.getItem(position);
-        menuListener.onSelect(position, item.getTitle(), item.getFragment());
+        getListView().setItemChecked(position, true);
+        if (menuListener != null) {
+            MenuDrawerAdapter.DrawerItem item = menuDrawerAdapter.getItem(position);
+            menuListener.onMenuSelect(position, item.getTitle(), item.getFragment());
+        }
     }
 
     public static interface MenuListener {
-        void onSelect(int position, String title, Fragment fragment);
+        void onMenuSelect(int position, String title, Fragment fragment);
     }
 }

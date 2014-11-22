@@ -15,95 +15,27 @@ import android.widget.TextView;
 import bruno.android.PartoHumanizado.R;
 import bruno.android.kickstart.adapter.MenuDrawerAdapter;
 import bruno.android.kickstart.fragment.MenuDrawerFragment;
+import bruno.android.kickstart.viewholder.MenuDrawerViewHolder;
 
 //import android.support.v7.app.ActionBar;
 
 /**
  * Created by bruno on 21/11/14.
  */
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements MenuDrawerFragment.MenuListener{
 
-    private MenuDrawerFragment menuDrawerFragment;
-    private View mFragmentContainerView;
-    private DrawerLayout mDrawerLayout;
-    private ActionBarDrawerToggle mDrawerToggle;
+    MenuDrawerViewHolder menuDrawerViewHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        menuDrawerFragment = (MenuDrawerFragment)
-                getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-        setUpDrawer();
-
-
-        menuDrawerFragment.getMenuDrawerAdapter().add(new MenuDrawerAdapter.DrawerItem() {
-            @Override
-            public String getTitle() {
-                return "Teste";
-            }
-
-            @Override
-            public View getMenuView(int position, View convertView, ViewGroup parent) {
-                TextView view = new TextView(parent.getContext(), null);
-                view.setText(getTitle());
-                return view;
-            }
-
-            @Override
-            public Fragment getFragment() {
-                return null;
-            }
-
-        });
-    }
-
-    public void setUpDrawer() {
-        mFragmentContainerView = findViewById(R.id.navigation_drawer);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-        // set a custom shadow that overlays the main content when the drawer opens
-        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-        // set up the drawer's list view with items and click listener
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeButtonEnabled(true);
-
-        // ActionBarDrawerToggle ties together the the proper interactions
-        // between the navigation drawer and the action bar app icon.
-        mDrawerToggle = new ActionBarDrawerToggle(
-                this,                    /* host Activity */
-                mDrawerLayout,                    /* DrawerLayout object */
-                R.drawable.ic_drawer,             /* nav drawer image to replace 'Up' caret */
-                R.string.open,  /* "open drawer" description for accessibility */
-                R.string.close  /* "close drawer" description for accessibility */
-        ) {
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                super.onDrawerClosed(drawerView);
-            }
-
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-            }
-        };
-        // Defer code dependent on restoration of previous instance state.
-        mDrawerLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                mDrawerToggle.syncState();
-            }
-        });
-
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        menuDrawerViewHolder = new MenuDrawerViewHolder(this);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
+        if (menuDrawerViewHolder.onOptionsItemSelected(item)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -111,15 +43,15 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public void onBackPressed() {
-        if (isDrawerOpen()) {
-            mDrawerLayout.closeDrawers();
+        if (menuDrawerViewHolder.onBackPressed())
             return;
-        }
         super.onBackPressed();
     }
 
 
-    public boolean isDrawerOpen() {
-        return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(mFragmentContainerView);
+
+    @Override
+    public void onMenuSelect(int position, String title, Fragment fragment) {
+
     }
 }
