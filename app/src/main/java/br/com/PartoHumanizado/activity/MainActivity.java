@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import br.com.PartoHumanizado.R;
 import br.com.PartoHumanizado.fragment.DenucieFragment;
 import br.com.PartoHumanizado.fragment.IntervencoesFragment;
+import br.com.PartoHumanizado.fragment.MapaDasDoulasFragment;
+import br.com.PartoHumanizado.fragment.MapaDeRedeDeApoioFragment;
 import br.com.PartoHumanizado.fragment.MenuDrawerFragment;
 import br.com.PartoHumanizado.fragment.SobreFragment;
 import br.com.PartoHumanizado.fragment.ViolenciasFragment;
@@ -21,30 +23,36 @@ import br.com.PartoHumanizado.viewholder.MenuDrawerViewHolder;
  */
 public class MainActivity extends ActionBarActivity implements MenuDrawerFragment.MenuListener {
 
-    MenuDrawerViewHolder menuDrawerViewHolder;
+    MenuDrawerViewHolder menuDrawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        menuDrawerViewHolder = new MenuDrawerViewHolder(this);
+        menuDrawer = new MenuDrawerViewHolder(this);
 
         IntervencoesFragment intervencoesFragment = new IntervencoesFragment();
-        menuDrawerViewHolder.add(intervencoesFragment);
+        menuDrawer.add(intervencoesFragment);
 
         ViolenciasFragment violenciasFragment = new ViolenciasFragment();
-        menuDrawerViewHolder.add(violenciasFragment);
+        menuDrawer.add(violenciasFragment);
 
         DenucieFragment denucieFragment = new DenucieFragment();
-        menuDrawerViewHolder.add(denucieFragment);
+        menuDrawer.add(denucieFragment);
+
+        MapaDasDoulasFragment mapaDasDoulasFragment = new MapaDasDoulasFragment();
+        menuDrawer.add(mapaDasDoulasFragment);
+
+        MapaDeRedeDeApoioFragment mapaDeRedeDeApoioFragment = new MapaDeRedeDeApoioFragment();
+        menuDrawer.add(mapaDeRedeDeApoioFragment);
 
         SobreFragment sobreFragment = new SobreFragment();
-        menuDrawerViewHolder.add(sobreFragment);
+        menuDrawer.add(sobreFragment);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (menuDrawerViewHolder.onOptionsItemSelected(item)) {
+        if (menuDrawer.onOptionsItemSelected(item)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -52,7 +60,7 @@ public class MainActivity extends ActionBarActivity implements MenuDrawerFragmen
 
     @Override
     public void onBackPressed() {
-        if (menuDrawerViewHolder.onBackPressed())
+        if (menuDrawer.onBackPressed())
             return;
         super.onBackPressed();
     }
@@ -63,6 +71,6 @@ public class MainActivity extends ActionBarActivity implements MenuDrawerFragmen
         fragmentManager.beginTransaction()
                 .replace(R.id.container, fragment)
                 .commit();
-        menuDrawerViewHolder.closeDrawer();
+        menuDrawer.closeDrawer();
     }
 }

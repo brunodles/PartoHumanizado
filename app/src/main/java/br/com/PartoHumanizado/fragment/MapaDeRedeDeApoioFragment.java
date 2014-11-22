@@ -9,18 +9,17 @@ import android.view.ViewGroup;
 /**
  * Created by bruno on 22/11/14.
  */
-public class DenucieFragment extends WebViewFragment {
+public class MapaDeRedeDeApoioFragment extends WebViewFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        String url = "http://cidadao.mpf.mp.br/formularios/formulario-eletronico";
-        loadUrl(url);
+        loadUrl("https://www.google.com/maps/d/viewer?mid=zIvkIuv-L1Pc.k5JnqQJn8CpQ");
         return view;
     }
 
     @Override
     public String getTitle() {
-        return "Denuncie";
+        return "Mapa de Rede de Apoio";
     }
 }
