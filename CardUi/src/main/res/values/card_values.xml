@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="card_background">#E5E5E5</color>
+    <color name="card_shadow">#30666666</color>
+    <dimen name="card_corner_radius">0dp</dimen>
+    <dimen name="card_shadow_size">5dp</dimen>
+</resources>

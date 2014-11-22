@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PartoHumanizado</string>
+    <string name="facebook_app_id"></string>
+
+    <string name="open">Abrir</string>
+    <string name="close">Fechar</string>
+</resources>

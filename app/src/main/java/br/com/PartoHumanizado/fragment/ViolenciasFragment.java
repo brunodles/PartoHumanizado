@@ -1,0 +1,28 @@
+package br.com.PartoHumanizado.fragment;
+
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+/**
+ * Created by bruno on 22/11/14.
+ */
+public class ViolenciasFragment extends BaseFragment {
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = new View(container.getContext());
+        view.setBackgroundColor(Color.parseColor("#00ff00"));
+        return view;
+//        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    @Override
+    public String getTitle() {
+        return "Violências";
+    }
+}
