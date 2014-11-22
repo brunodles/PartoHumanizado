@@ -14,7 +14,7 @@ import br.com.PartoHumanizado.viewholder.ItemMenuDrawerViewHolder;
 /**
  * Created by bruno on 22/11/14.
  */
-public class IntervencoesFragment extends Fragment implements MenuDrawerAdapter.DrawerItem {
+public class IntervencoesFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -29,15 +29,4 @@ public class IntervencoesFragment extends Fragment implements MenuDrawerAdapter.
         return "Intervenções";
     }
 
-    @Override
-    public View getMenuView(int position, View convertView, ViewGroup parent) {
-        ItemMenuDrawerViewHolder holder = ItemMenuDrawerViewHolder.getView(convertView, parent);
-        holder.setTittle(getTitle());
-        return holder.view;
-    }
-
-    @Override
-    public Fragment getFragment() {
-        return this;
-    }
 }
