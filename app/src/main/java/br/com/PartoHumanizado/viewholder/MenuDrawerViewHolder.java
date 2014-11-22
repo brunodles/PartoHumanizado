@@ -1,4 +1,4 @@
-package bruno.android.kickstart.viewholder;
+package br.com.PartoHumanizado.viewholder;
 
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import bruno.android.kickstart.adapter.MenuDrawerAdapter;
-import bruno.android.kickstart.fragment.MenuDrawerFragment;
+import br.com.PartoHumanizado.adapter.MenuDrawerAdapter;
+import br.com.PartoHumanizado.fragment.MenuDrawerFragment;
 
 /**
  * Created by bruno on 22/11/14.

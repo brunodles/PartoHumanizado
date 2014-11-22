@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="bruno.android.PartoHumanizado">
+    package="br.com.PartoHumanizado">
 
     <application
         android:allowBackup="true"
@@ -8,7 +8,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="bruno.android.kickstart.activity.MainActivity">
+            android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

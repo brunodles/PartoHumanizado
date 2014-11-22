@@ -1,4 +1,4 @@
-package bruno.android.kickstart.fragment;
+package br.com.PartoHumanizado.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import bruno.android.kickstart.adapter.MenuDrawerAdapter;
+import br.com.PartoHumanizado.adapter.MenuDrawerAdapter;
 
 /**
  * Created by bruno on 22/11/14.

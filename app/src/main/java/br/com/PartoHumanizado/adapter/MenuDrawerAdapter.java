@@ -1,4 +1,4 @@
-package bruno.android.kickstart.adapter;
+package br.com.PartoHumanizado.adapter;
 
 import android.support.v4.app.Fragment;
 import android.view.View;

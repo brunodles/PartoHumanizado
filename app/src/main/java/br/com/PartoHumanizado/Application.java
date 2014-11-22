@@ -1,4 +1,4 @@
-package bruno.android.PartoHumanizado;
+package br.com.PartoHumanizado;
 
 import com.parse.Parse;
 import com.parse.ParseFacebookUtils;
