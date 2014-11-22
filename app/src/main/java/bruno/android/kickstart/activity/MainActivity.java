@@ -1,25 +1,30 @@
 package bruno.android.kickstart.activity;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-//import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import bruno.android.PartoHumanizado.R;
-
+import bruno.android.kickstart.adapter.MenuDrawerAdapter;
 import bruno.android.kickstart.fragment.MenuDrawerFragment;
+
+//import android.support.v7.app.ActionBar;
 
 /**
  * Created by bruno on 21/11/14.
  */
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends ActionBarActivity {
 
     private MenuDrawerFragment menuDrawerFragment;
-    private View fragmentContainerView;
+    private View mFragmentContainerView;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
 
@@ -31,17 +36,38 @@ public class MainActivity extends FragmentActivity {
         menuDrawerFragment = (MenuDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         setUpDrawer();
+
+
+        menuDrawerFragment.getMenuDrawerAdapter().add(new MenuDrawerAdapter.DrawerItem() {
+            @Override
+            public String getTitle() {
+                return "Teste";
+            }
+
+            @Override
+            public View getMenuView(int position, View convertView, ViewGroup parent) {
+                TextView view = new TextView(parent.getContext(), null);
+                view.setText(getTitle());
+                return view;
+            }
+
+            @Override
+            public Fragment getFragment() {
+                return null;
+            }
+
+        });
     }
 
     public void setUpDrawer() {
-        fragmentContainerView = findViewById(R.id.navigation_drawer);
+        mFragmentContainerView = findViewById(R.id.navigation_drawer);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         // set a custom shadow that overlays the main content when the drawer opens
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         // set up the drawer's list view with items and click listener
 
-        ActionBar actionBar = getActionBar();
+        ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
 
@@ -73,5 +99,27 @@ public class MainActivity extends FragmentActivity {
         });
 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (isDrawerOpen()) {
+            mDrawerLayout.closeDrawers();
+            return;
+        }
+        super.onBackPressed();
+    }
+
+
+    public boolean isDrawerOpen() {
+        return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(mFragmentContainerView);
     }
 }
