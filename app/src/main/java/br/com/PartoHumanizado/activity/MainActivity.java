@@ -5,16 +5,16 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 
+import br.com.PartoHumanizado.R;
 import br.com.PartoHumanizado.fragment.MenuDrawerFragment;
 import br.com.PartoHumanizado.viewholder.MenuDrawerViewHolder;
-import br.com.PartoHumanizado.R;
 
 //import android.support.v7.app.ActionBar;
 
 /**
  * Created by bruno on 21/11/14.
  */
-public class MainActivity extends ActionBarActivity implements MenuDrawerFragment.MenuListener{
+public class MainActivity extends ActionBarActivity implements MenuDrawerFragment.MenuListener {
 
     MenuDrawerViewHolder menuDrawerViewHolder;
 
@@ -40,10 +40,8 @@ public class MainActivity extends ActionBarActivity implements MenuDrawerFragmen
         super.onBackPressed();
     }
 
-
-
     @Override
     public void onMenuSelect(int position, String title, Fragment fragment) {
-
+        menuDrawerViewHolder.closeDrawer();
     }
 }

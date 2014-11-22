@@ -104,10 +104,14 @@ public class MenuDrawerViewHolder {
 
     public boolean onBackPressed() {
         if (isDrawerOpen()) {
-            mDrawerLayout.closeDrawer(mFragmentContainerView);
+            closeDrawer();
             return true;
         }
         return false;
+    }
+
+    public void closeDrawer() {
+        mDrawerLayout.closeDrawer(mFragmentContainerView);
     }
 
     public boolean isDrawerOpen() {
