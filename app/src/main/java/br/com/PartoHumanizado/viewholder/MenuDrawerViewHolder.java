@@ -1,19 +1,16 @@
 package br.com.PartoHumanizado.viewholder;
 
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
+import br.com.PartoHumanizado.R;
 import br.com.PartoHumanizado.adapter.MenuDrawerAdapter;
 import br.com.PartoHumanizado.fragment.MenuDrawerFragment;
-import br.com.PartoHumanizado.R;
 //import bruno.android.PartoHumanizado.R;
 
 /**
@@ -75,27 +72,14 @@ public class MenuDrawerViewHolder {
         });
 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+    }
 
+    public MenuDrawerAdapter getMenuDrawerAdapter() {
+        return menuDrawerFragment.getMenuDrawerAdapter();
+    }
 
-        menuDrawerFragment.getMenuDrawerAdapter().add(new MenuDrawerAdapter.DrawerItem() {
-            @Override
-            public String getTitle() {
-                return "Teste";
-            }
-
-            @Override
-            public View getMenuView(int position, View convertView, ViewGroup parent) {
-                TextView view = new TextView(parent.getContext(), null);
-                view.setText(getTitle());
-                return view;
-            }
-
-            @Override
-            public Fragment getFragment() {
-                return null;
-            }
-
-        });
+    public boolean add(MenuDrawerAdapter.DrawerItem item) {
+        return getMenuDrawerAdapter().add(item);
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
