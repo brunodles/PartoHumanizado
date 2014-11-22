@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import br.com.PartoHumanizado.adapter.MenuDrawerAdapter;
+import br.com.PartoHumanizado.R;
 
 /**
  * Created by bruno on 22/11/14.
@@ -37,7 +38,7 @@ public class MenuDrawerFragment extends ListFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(bruno.android.PartoHumanizado.R.layout.fragment_navigation_drawer, null);
+        View view = inflater.inflate(R.layout.fragment_navigation_drawer, null);
         return view;
 //        return super.onCreateView(inflater, container, savedInstanceState);
     }

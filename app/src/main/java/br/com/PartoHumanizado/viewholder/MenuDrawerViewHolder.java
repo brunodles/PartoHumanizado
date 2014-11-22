@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import br.com.PartoHumanizado.adapter.MenuDrawerAdapter;
 import br.com.PartoHumanizado.fragment.MenuDrawerFragment;
+import br.com.PartoHumanizado.R;
+//import bruno.android.PartoHumanizado.R;
 
 /**
  * Created by bruno on 22/11/14.
@@ -33,12 +35,12 @@ public class MenuDrawerViewHolder {
 
     private void onCreate() {
         menuDrawerFragment = (MenuDrawerFragment)
-                activity.getSupportFragmentManager().findFragmentById(bruno.android.PartoHumanizado.R.id.navigation_drawer);
-        mFragmentContainerView = activity.findViewById(bruno.android.PartoHumanizado.R.id.navigation_drawer);
-        mDrawerLayout = (DrawerLayout) activity.findViewById(bruno.android.PartoHumanizado.R.id.drawer_layout);
+                activity.getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+        mFragmentContainerView = activity.findViewById(R.id.navigation_drawer);
+        mDrawerLayout = (DrawerLayout) activity.findViewById(R.id.drawer_layout);
 
         // set a custom shadow that overlays the main content when the drawer opens
-        mDrawerLayout.setDrawerShadow(bruno.android.PartoHumanizado.R.drawable.drawer_shadow, GravityCompat.START);
+        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         // set up the drawer's list view with items and click listener
 
         ActionBar actionBar = activity.getSupportActionBar();
@@ -50,9 +52,9 @@ public class MenuDrawerViewHolder {
         mDrawerToggle = new ActionBarDrawerToggle(
                 activity,                    /* host Activity */
                 mDrawerLayout,                    /* DrawerLayout object */
-                bruno.android.PartoHumanizado.R.drawable.ic_drawer,             /* nav drawer image to replace 'Up' caret */
-                bruno.android.PartoHumanizado.R.string.open,  /* "open drawer" description for accessibility */
-                bruno.android.PartoHumanizado.R.string.close  /* "close drawer" description for accessibility */
+                R.drawable.ic_drawer,             /* nav drawer image to replace 'Up' caret */
+                R.string.open,  /* "open drawer" description for accessibility */
+                R.string.close  /* "close drawer" description for accessibility */
         ) {
             @Override
             public void onDrawerClosed(View drawerView) {

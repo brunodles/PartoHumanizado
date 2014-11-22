@@ -5,9 +5,9 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 
-import bruno.android.PartoHumanizado.R;
 import br.com.PartoHumanizado.fragment.MenuDrawerFragment;
 import br.com.PartoHumanizado.viewholder.MenuDrawerViewHolder;
+import br.com.PartoHumanizado.R;
 
 //import android.support.v7.app.ActionBar;
 
