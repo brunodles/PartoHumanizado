@@ -50,7 +50,7 @@ public class DenucieFragment extends BaseFragment {
         });
 
 
-        webView.loadUrl("http://www.google.com");
+        webView.loadUrl("http://cidadao.mpf.mp.br/formularios/formulario-eletronico");
         return view;
     }
 

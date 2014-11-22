@@ -10,6 +10,7 @@ import br.com.PartoHumanizado.R;
 import br.com.PartoHumanizado.fragment.DenucieFragment;
 import br.com.PartoHumanizado.fragment.IntervencoesFragment;
 import br.com.PartoHumanizado.fragment.MenuDrawerFragment;
+import br.com.PartoHumanizado.fragment.SobreFragment;
 import br.com.PartoHumanizado.fragment.ViolenciasFragment;
 import br.com.PartoHumanizado.viewholder.MenuDrawerViewHolder;
 
@@ -36,6 +37,9 @@ public class MainActivity extends ActionBarActivity implements MenuDrawerFragmen
 
         DenucieFragment denucieFragment = new DenucieFragment();
         menuDrawerViewHolder.add(denucieFragment);
+
+        SobreFragment sobreFragment = new SobreFragment();
+        menuDrawerViewHolder.add(sobreFragment);
     }
 
     @Override
