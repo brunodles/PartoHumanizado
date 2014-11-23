@@ -18,8 +18,10 @@ public abstract class BaseFragment extends Fragment implements MenuDrawerAdapter
     public View getMenuView(int position, View convertView, ViewGroup parent) {
         ItemMenuDrawerViewHolder holder = ItemMenuDrawerViewHolder.getView(convertView, parent);
         holder.setTittle(getTitle());
+
         return holder.view;
     }
+
 
     @Override
     public Fragment getFragment() {

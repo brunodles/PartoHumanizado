@@ -9,17 +9,20 @@ import android.view.ViewGroup;
 /**
  * Created by bruno on 22/11/14.
  */
-public class MapaDeRedeDeApoioFragment extends WebViewFragment {
+public class MapaDeRedeDeApoioFragment extends MapsFragment {
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        loadUrl("https://www.google.com/maps/d/viewer?mid=zIvkIuv-L1Pc.k5JnqQJn8CpQ");
         return view;
     }
 
+
     @Override
     public String getTitle() {
-        return "Mapa de Rede de Apoio";
+        return "Mapa Rede de Apoio";
     }
+
+
 }

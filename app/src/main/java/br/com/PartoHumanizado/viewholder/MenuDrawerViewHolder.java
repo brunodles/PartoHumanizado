@@ -1,10 +1,11 @@
 package br.com.PartoHumanizado.viewholder;
 
-import android.support.v4.app.ActionBarDrawerToggle;
+
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -44,15 +45,17 @@ public class MenuDrawerViewHolder {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
 
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) activity.findViewById(R.id.toolbar);
+        mDrawerToggle  = new ActionBarDrawerToggle(
+                activity,
+                mDrawerLayout,
+                toolbar,
+                R.string.open,
+                R.string.close
+        )
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the navigation drawer and the action bar app icon.
-        mDrawerToggle = new ActionBarDrawerToggle(
-                activity,                    /* host Activity */
-                mDrawerLayout,                    /* DrawerLayout object */
-                R.drawable.ic_drawer,             /* nav drawer image to replace 'Up' caret */
-                R.string.open,  /* "open drawer" description for accessibility */
-                R.string.close  /* "close drawer" description for accessibility */
-        ) {
+       {
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
