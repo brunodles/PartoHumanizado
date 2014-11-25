@@ -16,7 +16,11 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
+
+import java.util.List;
 
 import br.com.PartoHumanizado.R;
 
@@ -24,15 +28,14 @@ import br.com.PartoHumanizado.R;
 /**
  * Created by sergio holanda on 22-Nov-14.
  */
-public class MapsFragment extends BaseFragment {
+public abstract class MapsFragment extends BaseFragment {
 
     private GoogleMap googleMap;
     private final String TAG = "PARTO-HUMANIZADO";
     MapView mapView;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_map_rede_apoio, container,
-                false);
+        View rootView = inflater.inflate(R.layout.fragment_map_rede_apoio, container,false);
         mapView = (MapView) rootView.findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);
         buildMap();
@@ -52,8 +55,17 @@ public class MapsFragment extends BaseFragment {
             Log.d(TAG,"Erro build map : "+e.getMessage());
         }
 
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(-5.787705,-35.21113), 10);
+    }
+    public void animateCamera(LatLng latLng,int zoom){
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, zoom);
         googleMap.animateCamera(cameraUpdate);
+
+    }
+    public void addMarkers(List<MarkerOptions> markers){
+
+        for (MarkerOptions marker:markers){
+            googleMap.addMarker(marker);
+        }
 
     }
 

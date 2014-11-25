@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="type_violency">
+        <item>Parto</item>
+        <item>Aborto</item>
+    </string-array>
+
+    <string-array name="type_intervention">
+        <item>Raspagem dos pelos</item>
+        <item>Manobra de Kristeller (subir na barriga para empurrar o bebê)</item>
+        <item>Episiotomia (corte no períneo)</item>
+        <item>Ausência de anestesia</item>
+        <item>Ausência de atendimento</item>
+        <item>Lavagem intestinal</item>
+        <item>Proibição de acompanhante</item>
+        <item>Proibição de doulas</item>
+        <item>Gritos e ofensas</item>
+        <item>Humilhação</item>
+        <item>Ausência de alimentação ou água</item>
+        <item>Ausência de informação</item>
+        <item>Cesareana desnecessária</item>
+    </string-array>
+
+    <string-array name="maternidades">
+        <item>Ishtar – Espaço para Gestantes</item>
+        <item>Maternati Grupo de Gestantes e Mães</item>
+    </string-array>
+
+</resources>

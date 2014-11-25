@@ -4,4 +4,6 @@
 
     <string name="open">Abrir</string>
     <string name="close">Fechar</string>
+    <string name="title_denuncia">Aqui você pode relatar o tipo de Violência sofrida.</string>
+
 </resources>
