@@ -2,7 +2,6 @@ package br.com.PartoHumanizado.model;
 
 import android.content.Context;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.PartoHumanizado.util.ModelCsvAssetReader;
@@ -12,18 +11,31 @@ import br.com.PartoHumanizado.util.ModelCsvAssetReader;
  */
 public class Intervencao {
 
-    public String titulo;
-    public List<String> texts;
+    private String titulo;
+    private String justificativa;
+    private String porQueEDesnecessaria;
 
     public static List<Intervencao> readFromAssets(Context context) {
-        IntervencoesCsvAssetReader intervencoesCsvAssetReader = new IntervencoesCsvAssetReader(context);
-        intervencoesCsvAssetReader.read();
-        return intervencoesCsvAssetReader.getObjects();
+        CsvAssetReader csvAssetReader = new CsvAssetReader(context);
+        csvAssetReader.read();
+        return csvAssetReader.getObjects();
     }
 
-    private static final class IntervencoesCsvAssetReader extends ModelCsvAssetReader<Intervencao> {
+    public String getTitulo() {
+        return titulo;
+    }
 
-        public IntervencoesCsvAssetReader(Context context) {
+    public String getJustificativa() {
+        return justificativa;
+    }
+
+    public String getPorQueEDesnecessaria() {
+        return porQueEDesnecessaria;
+    }
+
+    private static final class CsvAssetReader extends ModelCsvAssetReader<Intervencao> {
+
+        public CsvAssetReader(Context context) {
             super(context, "intervencoes.csv");
             setSeparatorRegex(";");
         }
@@ -32,11 +44,8 @@ public class Intervencao {
         protected Intervencao getObject(String[] split) {
             Intervencao intervencao = new Intervencao();
             intervencao.titulo = split[0];
-            ArrayList<String> texts = new ArrayList<String>();
-            for (int i = 1; i < split.length; i++) {
-                texts.add(split[i]);
-            }
-            intervencao.texts = texts;
+            intervencao.justificativa = split[1];
+            intervencao.porQueEDesnecessaria = split[2];
             return intervencao;
         }
     }

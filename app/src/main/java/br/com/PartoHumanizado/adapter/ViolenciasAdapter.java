@@ -1,7 +1,6 @@
 package br.com.PartoHumanizado.adapter;
 
 import android.content.Context;
-import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -11,31 +10,32 @@ import java.util.List;
 
 import br.com.PartoHumanizado.R;
 import br.com.PartoHumanizado.model.Intervencao;
+import br.com.PartoHumanizado.model.Violencia;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 /**
  * Created by bruno on 25/11/14.
  */
-public class IntervencoesAdapter extends BaseAdapter {
+public class ViolenciasAdapter extends BaseAdapter {
 
     private static final String TAG = "IntervencoesAdapter";
 
-    List<Intervencao> intevencoes;
+    List<Violencia> objecs;
 
-    public IntervencoesAdapter(Context context) {
-        this.intevencoes = Intervencao.readFromAssets(context);
+    public ViolenciasAdapter(Context context) {
+        this.objecs = Violencia.readFromAssets(context);
     }
 
     @Override
     public int getCount() {
-        int size = intevencoes.size();
+        int size = objecs.size();
         return size;
     }
 
     @Override
-    public Intervencao getItem(int position) {
-        return intevencoes.get(position);
+    public Violencia getItem(int position) {
+        return objecs.get(position);
     }
 
     @Override
@@ -47,14 +47,14 @@ public class IntervencoesAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = parent.inflate(parent.getContext(), R.layout.item_intervencao, null);
+            convertView = parent.inflate(parent.getContext(), R.layout.item_violencia, null);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.update(intevencoes.get(position));
+        viewHolder.update(objecs.get(position));
 
         return convertView;
     }
@@ -63,22 +63,17 @@ public class IntervencoesAdapter extends BaseAdapter {
         View rootView;
         @InjectView(R.id.titulo)
         TextView titulo;
-        @InjectView(R.id.justificativa)
-        TextView justificativa;
-        @InjectView(R.id.porQueEDesnecessaria)
-        TextView porQueEDesnecessaria;
+        @InjectView(R.id.texto)
+        TextView texto;
 
         public ViewHolder(View rootView) {
             this.rootView = rootView;
             ButterKnife.inject(this, rootView);
         }
 
-        public void update(Intervencao intervencao) {
-            titulo.setText(intervencao.getTitulo());
-            justificativa.setText(Html.fromHtml(
-                    "<b>Por quê ainda é Feita: </b>" + intervencao.getJustificativa()));
-            porQueEDesnecessaria.setText(Html.fromHtml(
-                    "<b>Por quê é desnecessária: </b>" + intervencao.getPorQueEDesnecessaria()));
+        public void update(Violencia violencia) {
+            titulo.setText(violencia.getTitulo());
+            texto.setText(violencia.getTextsAsString());
         }
     }
 

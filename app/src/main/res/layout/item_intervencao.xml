@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -14,8 +15,8 @@
             android:id="@+id/titulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Realizar uma cesárea sem necessidade"
-            android:textSize="20dp"
+            tools:text="Titulo"
+            android:textSize="16dp"
             android:textStyle="bold" />
 
         <View
@@ -24,11 +25,18 @@
             android:background="#3000" />
 
         <TextView
-            android:id="@+id/texto"
+            android:id="@+id/justificativa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="        Realizar uma cesárea sem a real necessidade e, especialmente, quando o desejo da paciente é por um parto normal é uma violência obstétrica. “Afinal sabemos que os riscos de uma cesárea são muito maiores do que o parto normal”, afirma a ginecologista e obstetra Ione Rodrigues Brum, vice-presidente da Comissão de parto, abortamento e puerpério da Federação Brasileira das Associações de Ginecologia e Obstetrícia (FEBRASGO).        Os principais riscos de uma cesárea são: Maior ocorrência de infecções por se tratar de uma cirurgia, maior tempo de internação hospitalar, pós-parto mais doloroso e complicações com a cicatrização. “Indicações de cesárea discutíveis são uma violência, afinal, a mulher confia naquele profissional e quando ele diz, por exemplo, que a cirurgia terá que ser feita porque o bebê está muito grande, ela acredita. O profissional que fala isso não leva em consideração que só temos certeza do tamanho do bebê depois que ele nasce”, afirma o obstetra e ginecologista Jorge Kuhn, professor do departamento de obstetrícia da Universidade Federal de São Paulo (UNIFESP)." />
+            tools:text="Justificativa"/>
+
+        <TextView
+            android:id="@+id/porQueEDesnecessaria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            tools:text="Por quê é desnecessária"/>
 
     </LinearLayout>
 </FrameLayout>
