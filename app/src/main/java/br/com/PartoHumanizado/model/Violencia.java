@@ -14,6 +14,7 @@ public class Violencia {
 
     private String titulo;
     private List<String> texts;
+    private boolean expanded;
 
     public static List<Violencia> readFromAssets(Context context) {
         CsvAssetReader intervencoesCsvAssetReader = new CsvAssetReader(context);
@@ -27,6 +28,14 @@ public class Violencia {
 
     public List<String> getTexts() {
         return texts;
+    }
+
+    public boolean isExpanded() {
+        return expanded;
+    }
+
+    public void setExpanded(boolean expanded) {
+        this.expanded = expanded;
     }
 
     public String getTextsAsString() {

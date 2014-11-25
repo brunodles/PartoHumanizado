@@ -33,7 +33,7 @@ public class AnimatedListAdapter implements ListAdapter {
 
         Animation animation = AnimationUtils.loadAnimation(parent.getContext(),
 				animation_id);
-		animation.setDuration(300);
+//		animation.setDuration(300);
 		view.startAnimation(animation);
 		lastAnimatedPosition = position;
 		animation = null;

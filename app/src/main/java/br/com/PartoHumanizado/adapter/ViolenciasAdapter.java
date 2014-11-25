@@ -9,7 +9,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import br.com.PartoHumanizado.R;
-import br.com.PartoHumanizado.model.Intervencao;
 import br.com.PartoHumanizado.model.Violencia;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -59,21 +58,31 @@ public class ViolenciasAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public static class ViewHolder {
+    public class ViewHolder implements View.OnClickListener {
         View rootView;
         @InjectView(R.id.titulo)
         TextView titulo;
         @InjectView(R.id.texto)
         TextView texto;
+        Violencia violencia;
 
         public ViewHolder(View rootView) {
             this.rootView = rootView;
+            rootView.setOnClickListener(this);
             ButterKnife.inject(this, rootView);
         }
 
         public void update(Violencia violencia) {
+            this.violencia = violencia;
             titulo.setText(violencia.getTitulo());
             texto.setText(violencia.getTextsAsString());
+        }
+
+        @Override
+        public void onClick(View v) {
+            boolean show = !violencia.isExpanded();
+            violencia.setExpanded(show);
+            texto.setVisibility(show ? View.VISIBLE : View.GONE);
         }
     }
 

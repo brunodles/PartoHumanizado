@@ -97,7 +97,11 @@
 =======
     <orderEntry type="library" exported="" name="appcompat-v7-21.0.0" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-21.0.0" level="project" />
+<<<<<<< HEAD
 >>>>>>> Remoção do getTittle no mapsFragment, tornando-o abstrato;
+=======
+    <orderEntry type="module" module-name="androidutils" exported="" />
+>>>>>>> Adapters
   </component>
 </module>
 
