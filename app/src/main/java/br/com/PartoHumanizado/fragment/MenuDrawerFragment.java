@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import br.com.PartoHumanizado.adapter.MenuDrawerAdapter;
 import br.com.PartoHumanizado.R;
+import br.com.PartoHumanizado.adapter.MenuDrawerAdapter;
 
 /**
  * Created by bruno on 22/11/14.

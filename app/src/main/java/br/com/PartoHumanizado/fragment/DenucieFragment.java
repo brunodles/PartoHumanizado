@@ -18,6 +18,8 @@ import br.com.PartoHumanizado.R;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
+import br.com.PartoHumanizado.fragment.base.WebViewFragment;
+
 /**
  * Created by bruno on 22/11/14.
  */

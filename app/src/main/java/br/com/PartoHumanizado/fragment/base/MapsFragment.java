@@ -1,4 +1,4 @@
-package br.com.PartoHumanizado.fragment;
+package br.com.PartoHumanizado.fragment.base;
 
 import android.annotation.SuppressLint;
 import android.os.Build;

@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import br.com.PartoHumanizado.fragment.base.BaseFragment;
+
 /**
  * Created by bruno on 22/11/14.
  */

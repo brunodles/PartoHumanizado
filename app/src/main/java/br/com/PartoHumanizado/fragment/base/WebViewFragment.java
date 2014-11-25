@@ -1,4 +1,4 @@
-package br.com.PartoHumanizado.fragment;
+package br.com.PartoHumanizado.fragment.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
