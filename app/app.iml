@@ -87,21 +87,13 @@
     <orderEntry type="library" exported="" name="butterknife-6.0.0" level="project" />
     <orderEntry type="library" exported="" name="support-v4-21.0.0" level="project" />
     <orderEntry type="library" exported="" name="Parse-1.7.1" level="project" />
-<<<<<<< HEAD
     <orderEntry type="library" exported="" name="butterknife-6.0.0" level="project" />
     <orderEntry type="library" exported="" name="library-0.0.5" level="project" />
     <orderEntry type="library" exported="" name="play-services-6.1.11" level="project" />
     <orderEntry type="library" exported="" name="library-2.4.0" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-21.0.0" level="project" />
     <orderEntry type="module" module-name="androidutils" exported="" />
-=======
-    <orderEntry type="library" exported="" name="appcompat-v7-21.0.0" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-21.0.0" level="project" />
-<<<<<<< HEAD
->>>>>>> Remoção do getTittle no mapsFragment, tornando-o abstrato;
-=======
-    <orderEntry type="module" module-name="androidutils" exported="" />
->>>>>>> Adapters
   </component>
 </module>
 

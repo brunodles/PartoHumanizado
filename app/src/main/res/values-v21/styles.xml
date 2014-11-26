@@ -1,0 +1,12 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <!--<style name="AppTheme" parent="android:Theme.Material.Light">-->
+    <!--&lt;!&ndash;<style name="AppTheme" parent="android:Theme.Holo.Light">&ndash;&gt;-->
+        <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+        <!--<item name="android:colorPrimary">@color/roza</item>-->
+        <!--<item name="android:colorPrimaryDark">@color/roxo</item>-->
+        <!--<item name="android:colorAccent">@color/branco</item>-->
+    <!--</style>-->
+
+</resources>
