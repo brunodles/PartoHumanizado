@@ -76,13 +76,18 @@ public class ViolenciasAdapter extends BaseAdapter {
             this.violencia = violencia;
             titulo.setText(violencia.getTitulo());
             texto.setText(violencia.getTextsAsString());
+            updateVisibility();
         }
 
         @Override
         public void onClick(View v) {
             boolean show = !violencia.isExpanded();
             violencia.setExpanded(show);
-            texto.setVisibility(show ? View.VISIBLE : View.GONE);
+            updateVisibility();
+        }
+
+        private void updateVisibility() {
+            texto.setVisibility(violencia.isExpanded() ? View.VISIBLE : View.GONE);
         }
     }
 
