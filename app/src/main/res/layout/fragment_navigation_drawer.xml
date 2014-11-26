@@ -1,9 +1,24 @@
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@android:id/list"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/roza2"
-    android:choiceMode="singleChoice"
-    android:divider="@android:color/transparent"
-    android:dividerHeight="0dp"/>
+    android:layout_height="wrap_content"
+    android:background="@color/roza"
+    android:paddingTop="25dp">
+
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="100dp"-->
+    <ImageView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="right"
+        android:alpha="0.1"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_parto" />
+
+    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp" />
+</FrameLayout>
