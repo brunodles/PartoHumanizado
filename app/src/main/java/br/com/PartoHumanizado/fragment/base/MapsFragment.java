@@ -91,6 +91,7 @@ public abstract class MapsFragment extends BaseFragment {
         @Override
         public boolean onMarkerClick(Marker marker) {
             openInfo();
+
             return true;
         }
     };

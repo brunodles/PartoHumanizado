@@ -31,7 +31,7 @@ public class MapaDeRedeDeApoioFragment extends MapsFragment {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         List<MarkerOptions> listaMarker = setMarker();
         addMarkers(listaMarker);
-        animateCamera(new LatLng(-15.8402169, -47.9065729), 10);
+        animateCamera(new LatLng(-15.8402169, -47.9065729),7);
         try {
             Log.d(TAG, "location " + getLatLng());
         } catch (Exception e) {
