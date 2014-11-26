@@ -88,7 +88,7 @@ public class DenucieFragment extends BaseFragment {
             String selected = null;
             for (int i = 0; i < getResources().getStringArray(R.array.type_intervention).length; i++) {
                 if (itens[i]) {
-                   Log.d(TAG,"Selected itens "+itens[i]);
+                   Log.d(TAG,"Selected itens "+array[i]);
                     selected = array[i];
                     itens[i]=false;
                 }

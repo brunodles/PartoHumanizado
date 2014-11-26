@@ -60,10 +60,14 @@ public class MapaDeRedeDeApoioFragment extends MapsFragment {
     }
 
     private List<MarkerOptions> setMarker() {
-        ListMarkerRedeApoio listMarkerRedeApoio = new ListMarkerRedeApoio();
-        List<RedeApoioMarker> listaMarker = listMarkerRedeApoio.getMarkers();
-        MarkerOptions markerOptions = new MarkerOptions();
+
+        List<RedeApoioMarker> listaMarker;
+        MarkerOptions markerOptions;
         List<MarkerOptions> listaMarkers = new ArrayList<MarkerOptions>();
+
+
+        listaMarker = RedeApoioMarker.readFromAssets(getActivity());
+
 
         for (RedeApoioMarker redeApoioMarker : listaMarker) {
             markerOptions = new MarkerOptions()
@@ -72,6 +76,7 @@ public class MapaDeRedeDeApoioFragment extends MapsFragment {
                     .icon(redeApoioMarker.getIcon());
 
             listaMarkers.add(markerOptions);
+            addInfo(redeApoioMarker.getTitle(),redeApoioMarker.getTelefone());
 
         }
 
