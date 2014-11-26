@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:left="2dp"
-        android:top="2dp">
-        <shape android:shape="rectangle">
-            <!--<size-->
-            <!--android:width="100dp"-->
-            <!--android:height="100dp" />-->
-            <corners android:radius="10dp" />
-            <solid android:color="@color/black_alpha1" />
-        </shape>
-    </item>
+    <!--<item android:top="2dp">-->
+        <!--<shape android:shape="rectangle">-->
+            <!--&lt;!&ndash;<size&ndash;&gt;-->
+            <!--&lt;!&ndash;android:width="100dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:height="100dp" />&ndash;&gt;-->
+            <!--<corners android:radius="5dp" />-->
+            <!--<solid android:color="@color/black_alpha1" />-->
+        <!--</shape>-->
+    <!--</item>-->
     <!--<item-->
     <!--android:bottom="2dp"-->
     <!--android:right="2dp">-->
@@ -23,15 +21,18 @@
     <!--<solid android:color="#000" />-->
     <!--</shape>-->
     <!--</item>-->
-    <item
-        android:bottom="2dp"
-        android:right="2dp">
+    <!--<item-->
+        <!--android:bottom="5dp"-->
+        <!--android:left="2dp"-->
+        <!--android:right="2dp">-->
+    <item>
         <shape android:shape="rectangle">
-            <corners
-                android:bottomLeftRadius="15dp"
-                android:bottomRightRadius="10dp"
-                android:topLeftRadius="10dp"
-                android:topRightRadius="15dp" />
+            <corners android:radius="5dp" />
+            <!--<corners-->
+            <!--android:bottomLeftRadius="15dp"-->
+            <!--android:bottomRightRadius="10dp"-->
+            <!--android:topLeftRadius="10dp"-->
+            <!--android:topRightRadius="15dp" />-->
             <solid android:color="@color/roxo" />
             <padding
                 android:bottom="10dp"
