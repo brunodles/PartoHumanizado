@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import java.lang.reflect.Array;
 
 import br.com.PartoHumanizado.R;
+import br.com.PartoHumanizado.fragment.base.BaseFragment;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 

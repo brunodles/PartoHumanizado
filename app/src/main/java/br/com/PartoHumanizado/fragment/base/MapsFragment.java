@@ -1,7 +1,5 @@
 package br.com.PartoHumanizado.fragment.base;
 
-import android.annotation.SuppressLint;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -9,16 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 
 import java.util.List;
 
@@ -33,9 +28,10 @@ public abstract class MapsFragment extends BaseFragment {
     private GoogleMap googleMap;
     private final String TAG = "PARTO-HUMANIZADO";
     MapView mapView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_map_rede_apoio, container,false);
+        View rootView = inflater.inflate(R.layout.fragment_map_rede_apoio, container, false);
         mapView = (MapView) rootView.findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);
         buildMap();
@@ -43,7 +39,7 @@ public abstract class MapsFragment extends BaseFragment {
         return rootView;
     }
 
-    private void buildMap(){
+    private void buildMap() {
 
         googleMap = mapView.getMap();
         googleMap.getUiSettings().setMyLocationButtonEnabled(false);
@@ -52,18 +48,20 @@ public abstract class MapsFragment extends BaseFragment {
         try {
             MapsInitializer.initialize(this.getActivity());
         } catch (Exception e) {
-            Log.d(TAG,"Erro build map : "+e.getMessage());
+            Log.d(TAG, "Erro build map : " + e.getMessage());
         }
 
     }
-    public void animateCamera(LatLng latLng,int zoom){
+
+    public void animateCamera(LatLng latLng, int zoom) {
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, zoom);
         googleMap.animateCamera(cameraUpdate);
 
     }
-    public void addMarkers(List<MarkerOptions> markers){
 
-        for (MarkerOptions marker:markers){
+    public void addMarkers(List<MarkerOptions> markers) {
+
+        for (MarkerOptions marker : markers) {
             googleMap.addMarker(marker);
         }
 
@@ -86,11 +84,11 @@ public abstract class MapsFragment extends BaseFragment {
         super.onLowMemory();
         mapView.onLowMemory();
     }
+
     @Override
     public String getTitle() {
         return "Mapa";
     }
-
 
 
 }
