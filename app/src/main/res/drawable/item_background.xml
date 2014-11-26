@@ -8,21 +8,21 @@
             <!--android:width="100dp"-->
             <!--android:height="100dp" />-->
             <corners android:radius="10dp" />
-            <solid android:color="#3000" />
+            <solid android:color="@color/black_alpha1" />
         </shape>
     </item>
-    <item
-        android:bottom="2dp"
-        android:right="2dp">
-        <shape android:shape="rectangle">
-            <corners
-                android:bottomLeftRadius="10dp"
-                android:bottomRightRadius="15dp"
-                android:topLeftRadius="15dp"
-                android:topRightRadius="10dp" />
-            <solid android:color="#000" />
-        </shape>
-    </item>
+    <!--<item-->
+    <!--android:bottom="2dp"-->
+    <!--android:right="2dp">-->
+    <!--<shape android:shape="rectangle">-->
+    <!--<corners-->
+    <!--android:bottomLeftRadius="10dp"-->
+    <!--android:bottomRightRadius="15dp"-->
+    <!--android:topLeftRadius="15dp"-->
+    <!--android:topRightRadius="10dp" />-->
+    <!--<solid android:color="#000" />-->
+    <!--</shape>-->
+    <!--</item>-->
     <item
         android:bottom="2dp"
         android:right="2dp">
@@ -32,7 +32,7 @@
                 android:bottomRightRadius="10dp"
                 android:topLeftRadius="10dp"
                 android:topRightRadius="15dp" />
-            <solid android:color="#ddd" />
+            <solid android:color="@color/roxo" />
             <padding
                 android:bottom="10dp"
                 android:left="10dp"

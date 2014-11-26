@@ -2,8 +2,13 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-    <!--<style name="AppTheme" parent="android:Theme.Holo.Light">-->
+        <!--<style name="AppTheme" parent="android:Theme.Holo.Light">-->
         <!-- Customize your theme here. -->
+
+        <item name="colorPrimary">@color/roza</item>
+        <item name="colorPrimaryDark">@color/roxo</item>
+        <item name="colorAccent">@color/branco</item>
+        <item name="android:colorBackground">@color/roza2</item>
     </style>
 
 </resources>
