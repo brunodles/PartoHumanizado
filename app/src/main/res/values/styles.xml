@@ -5,10 +5,10 @@
         <!--<style name="AppTheme" parent="android:Theme.Holo.Light">-->
         <!-- Customize your theme here. -->
 
-        <item name="colorPrimary">@color/roza</item>
-        <item name="colorPrimaryDark">@color/roxo</item>
-        <item name="colorAccent">@color/branco</item>
-        <item name="android:colorBackground">@color/roza2</item>
+        <item name="colorPrimary">@color/pink1</item>
+        <item name="colorPrimaryDark">@color/purple</item>
+        <item name="colorAccent">@color/white</item>
+        <item name="android:colorBackground">@color/pink2</item>
     </style>
 
 </resources>
