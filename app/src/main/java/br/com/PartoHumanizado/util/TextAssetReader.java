@@ -9,6 +9,7 @@ public class TextAssetReader extends AssetReader {
 
     StringBuilder builder;
     String tittle = null;
+    String lineBreaker = "\n";
 
     public TextAssetReader(Context context, String fileName) {
         super(context, fileName);
@@ -21,7 +22,11 @@ public class TextAssetReader extends AssetReader {
             tittle = line;
         else
             builder.append(line)
-                    .append("\n");
+                    .append(lineBreaker);
+    }
+
+    public void setLineBreaker(String lineBreaker) {
+        this.lineBreaker = lineBreaker;
     }
 
     public String getString() {
