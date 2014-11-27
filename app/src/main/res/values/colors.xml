@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="roza">#f0ceef</color>
-    <color name="roza2">#f6e3f6</color>
-    <color name="roxo">#d4bad4</color>
-    <color name="branco">#ffffff</color>
-    <color name="preto">#000000</color>
+    <color name="purple">#d4bad4</color>
+    <color name="pink1">#f0ceef</color>
+    <color name="pink2">#f6e3f6</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
     <color name="black_alpha7">#7000</color>
     <color name="black_alpha1">#1000</color>
 </resources>
