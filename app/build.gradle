@@ -1,7 +1,5 @@
 apply plugin: 'com.android.application'
 
-
-// key: 242Bk3vH
 android {
     signingConfigs {
         dafaultSigning {
