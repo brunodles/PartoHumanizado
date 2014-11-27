@@ -12,17 +12,14 @@ import java.util.ArrayList;
 /**
  * Created by bruno on 25/11/14.
  */
-public abstract class CsvAssetReader {
+public abstract class CsvAssetReader extends AssetReader {
 
     private static final String TAG = "CsvAssetReader";
 
-    Context context;
-    String fileName;
     String separatorRegex = ",";
 
     public CsvAssetReader(Context context, String fileName) {
-        this.context = context;
-        this.fileName = fileName;
+        super(context, fileName);
     }
 
     public CsvAssetReader setSeparatorRegex(String separatorRegex) {
@@ -30,27 +27,7 @@ public abstract class CsvAssetReader {
         return this;
     }
 
-    public void read() {
-        InputStream is = null;
-        try {
-            is = context.getAssets().open(fileName);
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-
-            String line;
-            while ((line = br.readLine()) != null)
-                readLine(line);
-
-            br.close();
-        } catch (IOException e) {
-            Log.e(TAG, "read ", e);
-        } finally {
-            try {
-                is.close();
-            } catch (IOException e) {
-            }
-        }
-    }
-
+    @Override
     protected void readLine(String line) {
 //        String[] split = line.split(separatorRegex);
         String[] strings = splitString(line, separatorRegex);

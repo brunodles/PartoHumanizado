@@ -1,4 +1,4 @@
-package br.com.PartoHumanizado.fragment.base;
+package br.com.PartoHumanizado.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,9 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import br.com.PartoHumanizado.R;
-import br.com.PartoHumanizado.fragment.IntervencoesFragment;
-import br.com.PartoHumanizado.fragment.ViolenciasFragment;
+import br.com.PartoHumanizado.fragment.base.BaseFragment;
 import bruno.android.utils.adapter.FragmentPageAdapter;
+import bruno.android.utils.adapter.FragmentStatePageAdapter;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
@@ -26,13 +26,8 @@ public class IntervencoesViolenciasFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_intervencoes_violencias, null);
         ButterKnife.inject(this, view);
-        return view;
-    }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        FragmentPageAdapter pageAdapter = new FragmentPageAdapter(getFragmentManager());
+        FragmentPageAdapter pageAdapter = new FragmentPageAdapter(getChildFragmentManager());
 
         IntervencoesFragment intervencoes = new IntervencoesFragment();
         pageAdapter.addFragment(intervencoes, intervencoes.getTitle());
@@ -41,6 +36,8 @@ public class IntervencoesViolenciasFragment extends BaseFragment {
         pageAdapter.addFragment(violenciasFragment, violenciasFragment.getTitle());
 
         viewPager.setAdapter(pageAdapter);
+
+        return view;
     }
 
     @Override

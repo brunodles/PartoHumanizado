@@ -8,11 +8,12 @@ import android.view.MenuItem;
 
 import br.com.PartoHumanizado.R;
 import br.com.PartoHumanizado.fragment.DenucieFragment;
+import br.com.PartoHumanizado.fragment.InformacoesFragment;
+import br.com.PartoHumanizado.fragment.IntervencoesViolenciasFragment;
 import br.com.PartoHumanizado.fragment.MapaDasDoulasFragment;
 import br.com.PartoHumanizado.fragment.MapaDeRedeDeApoioFragment;
 import br.com.PartoHumanizado.fragment.MenuDrawerFragment;
 import br.com.PartoHumanizado.fragment.SobreFragment;
-import br.com.PartoHumanizado.fragment.base.IntervencoesViolenciasFragment;
 import br.com.PartoHumanizado.viewholder.MenuDrawerViewHolder;
 
 //import android.support.v7.app.ActionBar;
@@ -35,6 +36,10 @@ public class MainActivity extends ActionBarActivity implements MenuDrawerFragmen
 //
 //        ViolenciasFragment violenciasFragment = new ViolenciasFragment();
 //        menuDrawer.add(violenciasFragment);
+
+        InformacoesFragment informacoesFragment = new InformacoesFragment();
+        showFragment(informacoesFragment);
+        menuDrawer.add(informacoesFragment);
 
         IntervencoesViolenciasFragment intervencoesViolenciasFragment = new IntervencoesViolenciasFragment();
         menuDrawer.add(intervencoesViolenciasFragment);
@@ -69,10 +74,14 @@ public class MainActivity extends ActionBarActivity implements MenuDrawerFragmen
 
     @Override
     public void onMenuSelect(int position, String title, Fragment fragment) {
+        showFragment(fragment);
+        menuDrawer.closeDrawer();
+    }
+
+    private void showFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.container, fragment)
                 .commit();
-        menuDrawer.closeDrawer();
     }
 }

@@ -82,7 +82,10 @@ public class MenuDrawerViewHolder {
     }
 
     public boolean add(MenuDrawerAdapter.DrawerItem item) {
-        return getMenuDrawerAdapter().add(item);
+        MenuDrawerAdapter menuDrawerAdapter = getMenuDrawerAdapter();
+//        if (menuDrawerAdapter.isEmpty())
+
+        return menuDrawerAdapter.add(item);
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
