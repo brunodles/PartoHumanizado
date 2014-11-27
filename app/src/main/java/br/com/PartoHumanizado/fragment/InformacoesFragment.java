@@ -36,6 +36,7 @@ public class InformacoesFragment extends BaseFragment {
         addFragment(pageAdapter, TextFragment.create("partoHumanizado.txt", "Parto Humanizado"));
         addFragment(pageAdapter, TextFragment.create("violenciaObstetrica.txt", "Violência Obstétrica"));
         addFragment(pageAdapter, TextFragment.create("doulas.txt", "Doulas"));
+        addFragment(pageAdapter, TextFragment.create("planoDeParto.txt", "Plano de Parto"));
 
         viewPager.setAdapter(pageAdapter);
 
