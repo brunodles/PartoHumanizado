@@ -40,6 +40,7 @@ public class TextFragment extends BaseFragment {
         String filename = getArguments().getString(KEY_ASSET_FILENAME);
         Log.d(TAG, "onAttach filename: " + filename);
         TextAssetReader textAssetReader = new TextAssetReader(activity, filename);
+        textAssetReader.setLineBreaker("<br/>");
         textAssetReader.read();
 
         tittle = textAssetReader.getTittle();
