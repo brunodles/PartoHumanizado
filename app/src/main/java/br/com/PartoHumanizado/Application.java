@@ -15,8 +15,10 @@ public class Application extends android.app.Application{
     public void onCreate() {
         super.onCreate();
 
-      //  ParseObject.registerSubclass(Relato.class);
-      //  Parse.initialize(this, "QbxVFyJAXjazPgMfp1WdASduaZP8rKveJ71cnbuF", "1PC4sWWFi1P2lp77JJGzK0jL0bgiGxqPMzYz3I98");
+
+
+        Parse.initialize(this, "QbxVFyJAXjazPgMfp1WdASduaZP8rKveJ71cnbuF", "1PC4sWWFi1P2lp77JJGzK0jL0bgiGxqPMzYz3I98");
+        ParseObject.registerSubclass(Relato.class);
         //ParseFacebookUtils.initialize(getString(R.string.facebook_app_id));
     }
 }

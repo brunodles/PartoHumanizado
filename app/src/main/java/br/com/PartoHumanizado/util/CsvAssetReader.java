@@ -58,7 +58,7 @@ public abstract class CsvAssetReader {
         readSplitedLine(strings);
     }
 
-    private static String[] splitString(String line, String separatorRegex) {
+    public static String[] splitString(String line, String separatorRegex) {
         ArrayList<String> strings = new ArrayList<String>();
 
         int lineLength = line.length();

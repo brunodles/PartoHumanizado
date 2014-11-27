@@ -73,10 +73,11 @@ public class MapaDeRedeDeApoioFragment extends MapsFragment {
             markerOptions = new MarkerOptions()
                     .title(redeApoioMarker.getTitle())
                     .position(redeApoioMarker.getLatLng())
+                    .snippet(redeApoioMarker.getTelefone())
                     .icon(redeApoioMarker.getIcon());
 
             listaMarkers.add(markerOptions);
-            addInfo(redeApoioMarker.getTitle(),redeApoioMarker.getTelefone());
+          //  addInfo(redeApoioMarker.getTitle(),redeApoioMarker.getTelefone());
 
         }
 

@@ -5,13 +5,13 @@
     android:animateLayoutChanges="true">
 
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <br.com.PartoHumanizado.view.MapWrapperLayout
+
+        <br.com.PartoHumanizado.view.MapWrapperLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/map_layout">
@@ -19,7 +19,15 @@
         <com.google.android.gms.maps.MapView android:id="@+id/mapview"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />
-    </br.com.PartoHumanizado.view.MapWrapperLayout>
+
+        </br.com.PartoHumanizado.view.MapWrapperLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/view_background"
+            android:visibility="gone"
+            android:background="#3000">
+        </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -38,10 +46,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/et_info_mapa"
             android:textSize="20sp"
-
             android:layout_marginBottom="15dp"
             android:textColor="@android:color/holo_green_dark"/>
-
 
 
         <LinearLayout
@@ -58,14 +64,16 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:id="@+id/et_telefone_mapa"
-                android:gravity="left|center_horizontal"
+                android:gravity="left|center_vertical"
                 android:textSize="20sp"
                 android:textAlignment="center"
                 android:textColor="@android:color/holo_green_dark"/>
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:src="@android:color/holo_green_dark"
+            android:id="@+id/button_call_map"
+            android:background="@drawable/ic_call"
             android:layout_gravity="right"/>
         </LinearLayout>
 
@@ -74,11 +82,5 @@
 
     </RelativeLayout>
     </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/view_background"
-        android:visibility="gone"
-        android:background="#3000">
-    </RelativeLayout>
+
     </FrameLayout>

@@ -9,13 +9,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import com.parse.ParseObject;
 
 import java.lang.reflect.Array;
 
 import br.com.PartoHumanizado.R;
 import br.com.PartoHumanizado.fragment.base.BaseFragment;
+import br.com.PartoHumanizado.model.Relato;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
@@ -26,10 +30,20 @@ import br.com.PartoHumanizado.fragment.base.WebViewFragment;
  */
 public class DenucieFragment extends BaseFragment {
 
-    @InjectView(R.id.spinner_type_violency)
-    Spinner spinerTypeViolency;
+  //  @InjectView(R.id.spinner_type_violency)
+  //  Spinner spinerTypeViolency;
     @InjectView((R.id.et_intervencao))
     EditText editTextIntervencoes;
+    @InjectView(R.id.et_nome_medico)
+    EditText etNomeMedico;
+    @InjectView(R.id.et_nome_vitima)
+    EditText etNomeVitima;
+    @InjectView(R.id.et_crm_medico)
+    EditText etCrmMedico;
+    @InjectView(R.id.et_emai_vitima)
+    EditText etEmailVitima;
+    @InjectView(R.id.button_save_relato)
+    Button btSaveRelato;
 
     private final String TAG =  "PARTO-HUMANIZADO";
     private boolean itens[];
@@ -37,12 +51,6 @@ public class DenucieFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.ranking_denuncia,container,false);
         ButterKnife.inject(this, view);
-
-
-
-
-     //   String url = "http://cidadao.mpf.mp.br/formularios/formulario-eletronico";
-      //  loadUrl(url);
         updateUI();
         return view;
     }
@@ -51,8 +59,9 @@ public class DenucieFragment extends BaseFragment {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.type_violency, R.layout.spinner_custom);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinerTypeViolency.setAdapter(adapter);
+        //spinerTypeViolency.setAdapter(adapter);
         editTextIntervencoes.setOnClickListener(onClickIntervention);
+        btSaveRelato.setOnClickListener(onclickSave);
     }
 
     private View.OnClickListener onClickIntervention = new View.OnClickListener() {
@@ -67,12 +76,12 @@ public class DenucieFragment extends BaseFragment {
     private void buildDialogState(){
         itens= new boolean[getResources().getStringArray(R.array.type_intervention).length];
         final AlertDialog.Builder buildAlert = new AlertDialog.Builder(getActivity());
-        buildAlert.setTitle("Selecione o estado");
+        buildAlert.setTitle("Marque o tipo de violência sofrida!");
         buildAlert.setPositiveButton("ok",onClickPositive);
         buildAlert.setMultiChoiceItems(R.array.type_intervention, itens, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i, boolean b) {
-                Log.d(TAG, "clicked ");
+
             }
         });
 
@@ -96,6 +105,24 @@ public class DenucieFragment extends BaseFragment {
             editTextIntervencoes.setText(selected);
         }
     };
+
+    private View.OnClickListener onclickSave = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+            saveDenuncia();
+        }
+    };
+    private void saveDenuncia(){
+
+
+        Relato relato = new Relato();
+
+        relato.setNomeVitima(etNomeVitima.getText().toString());
+        relato.saveInBackground();
+
+
+    }
 
     @Override
     public String getTitle() {
