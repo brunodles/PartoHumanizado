@@ -15,7 +15,7 @@
         <!--<android.support.v4.view.PagerTitleStrip-->
         <android.support.v4.view.PagerTabStrip
             android:translationZ="10dp"
-            android:background="@color/roxo"
+            android:background="@color/purple"
             android:padding="5dp"
             android:textColor="@android:color/white"
             android:layout_width="match_parent"

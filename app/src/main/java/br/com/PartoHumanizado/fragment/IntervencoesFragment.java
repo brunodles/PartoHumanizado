@@ -19,7 +19,7 @@ public class IntervencoesFragment extends BaseListFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_intervencoes, null);
+        View view = inflater.inflate(R.layout.fragment_list, null);
         return view;
     }
 

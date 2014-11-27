@@ -11,18 +11,19 @@
         android:padding="10dp">
 
         <TextView
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:text="Titulo"
             android:id="@+id/titulo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            tools:text="Titulo" />
 
         <TextView
-            android:layout_marginTop="10dp"
-            tools:text="Texto"
             android:id="@+id/texto"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="18sp"
+            tools:text="Texto" />
     </LinearLayout>
 </ScrollView>
