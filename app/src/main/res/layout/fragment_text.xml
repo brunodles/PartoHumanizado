@@ -10,6 +10,14 @@
         android:orientation="vertical"
         android:padding="10dp">
 
+        <ImageView
+            android:minHeight="180dp"
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            tools:src="@color/black" />
+
         <TextView
             android:id="@+id/titulo"
             android:layout_width="match_parent"
