@@ -29,6 +29,6 @@ public class ViolenciasFragment extends BaseListFragment {
 
     @Override
     public String getTitle() {
-        return "Violências";
+        return "Tipos de Violência";
     }
 }
