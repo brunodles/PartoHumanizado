@@ -10,6 +10,9 @@ import com.parse.ParseObject;
 @ParseClassName("Relato")
 public class Relato extends ParseObject {
 
+    public Relato(){
+
+    }
 
     private final String VIOLENCIA = "violencia";
     private final String CRM_MEDICO = "crm_medico";
