@@ -14,6 +14,7 @@ import br.com.PartoHumanizado.fragment.MapaDasDoulasFragment;
 import br.com.PartoHumanizado.fragment.MapaDeRedeDeApoioFragment;
 import br.com.PartoHumanizado.fragment.MenuDrawerFragment;
 import br.com.PartoHumanizado.fragment.SobreFragment;
+import br.com.PartoHumanizado.fragment.ViolenciasFragment;
 import br.com.PartoHumanizado.viewholder.MenuDrawerViewHolder;
 
 //import android.support.v7.app.ActionBar;
@@ -31,18 +32,18 @@ public class MainActivity extends ActionBarActivity implements MenuDrawerFragmen
         setContentView(R.layout.activity_main);
         menuDrawer = new MenuDrawerViewHolder(this);
 
-//        IntervencoesFragment intervencoesFragment = new IntervencoesFragment();
-//        menuDrawer.add(intervencoesFragment);
-//
-//        ViolenciasFragment violenciasFragment = new ViolenciasFragment();
-//        menuDrawer.add(violenciasFragment);
-
         InformacoesFragment informacoesFragment = new InformacoesFragment();
         showFragment(informacoesFragment);
         menuDrawer.add(informacoesFragment);
 
-        IntervencoesViolenciasFragment intervencoesViolenciasFragment = new IntervencoesViolenciasFragment();
-        menuDrawer.add(intervencoesViolenciasFragment);
+//        IntervencoesFragment intervencoesFragment = new IntervencoesFragment();
+//        menuDrawer.add(intervencoesFragment);
+//
+        ViolenciasFragment violenciasFragment = new ViolenciasFragment();
+        menuDrawer.add(violenciasFragment);
+
+//        IntervencoesViolenciasFragment intervencoesViolenciasFragment = new IntervencoesViolenciasFragment();
+//        menuDrawer.add(intervencoesViolenciasFragment);
 
         DenucieFragment denucieFragment = new DenucieFragment();
         menuDrawer.add(denucieFragment);
