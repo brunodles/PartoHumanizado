@@ -1,9 +1,13 @@
 package br.com.PartoHumanizado.adapter;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.os.Build;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -60,6 +64,9 @@ public class ViolenciasAdapter extends BaseAdapter {
 
     public class ViewHolder implements View.OnClickListener {
         View rootView;
+
+        @InjectView(R.id.container)
+        LinearLayout container;
         @InjectView(R.id.titulo)
         TextView titulo;
         @InjectView(R.id.texto)
@@ -87,7 +94,19 @@ public class ViolenciasAdapter extends BaseAdapter {
         }
 
         private void updateVisibility() {
-            texto.setVisibility(violencia.isExpanded() ? View.VISIBLE : View.GONE);
+            boolean expanded = violencia.isExpanded();
+            texto.setVisibility(expanded ? View.VISIBLE : View.GONE);
+
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                float px = expanded ? getAsDp(5) : 0f;
+                container.setTranslationZ(px);
+            }
+        }
+
+        private float getAsDp(int dpValue) {
+            Resources r = rootView.getContext().getResources();
+            return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, r.getDisplayMetrics());
         }
     }
 
