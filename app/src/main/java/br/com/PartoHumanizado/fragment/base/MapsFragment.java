@@ -94,6 +94,22 @@ public abstract class MapsFragment extends BaseFragment {
 
     }
 
+    public void animateMarker(LatLng latLng, int zoom, final Marker marker) {
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, zoom);
+        googleMap.animateCamera(cameraUpdate, new GoogleMap.CancelableCallback() {
+            @Override
+            public void onFinish() {
+                openInfo(marker);
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+        });
+
+    }
+
     public void addMarkers(List<MarkerOptions> markers) {
 
 
@@ -106,12 +122,12 @@ public abstract class MapsFragment extends BaseFragment {
     private GoogleMap.OnMarkerClickListener markerClickListener = new GoogleMap.OnMarkerClickListener() {
         @Override
         public boolean onMarkerClick(Marker marker) {
-            openInfo(marker);
+            animateMarker(marker.getPosition(),13,marker);
             return true;
         }
     };
     public void addInfo(String info,String telefone){
-        Log.d("PARTO-HUMANIZADO","TITLE "+info + " telefone "+telefone);
+
         numeroTelefone = telefone;
         textInfo.setText(info);
         textTelefone.setText(telefone);
@@ -120,6 +136,7 @@ public abstract class MapsFragment extends BaseFragment {
 
 
     private void openInfo(Marker marker){
+
         Animation animationIn = AnimationUtils.loadAnimation(getActivity(),R.anim.slide_in_up);
         viewBackground.setVisibility(View.VISIBLE);
         viewInfo.setVisibility(View.VISIBLE);

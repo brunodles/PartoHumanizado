@@ -7,12 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.PartoHumanizado.R;
 import br.com.PartoHumanizado.fragment.base.MapsFragment;
 import br.com.PartoHumanizado.model.ListMarkerRedeApoio;
 import br.com.PartoHumanizado.model.RedeApoioMarker;
@@ -74,7 +77,7 @@ public class MapaDeRedeDeApoioFragment extends MapsFragment {
                     .title(redeApoioMarker.getTitle())
                     .position(redeApoioMarker.getLatLng())
                     .snippet(redeApoioMarker.getTelefone())
-                    .icon(redeApoioMarker.getIcon());
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker));
 
             listaMarkers.add(markerOptions);
           //  addInfo(redeApoioMarker.getTitle(),redeApoioMarker.getTelefone());

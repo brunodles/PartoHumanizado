@@ -94,11 +94,17 @@ public class DenucieFragment extends BaseFragment {
         @Override
         public void onClick(DialogInterface dialogInterface, int witch) {
             String array[] = getResources().getStringArray(R.array.type_intervention);
-            String selected = null;
+            String selected = "";
             for (int i = 0; i < getResources().getStringArray(R.array.type_intervention).length; i++) {
                 if (itens[i]) {
                    Log.d(TAG,"Selected itens "+array[i]);
-                    selected = array[i];
+
+                    if(array.length>1){
+                        selected += array[i]+ " , ";
+                    }else{
+                        selected = array[i];
+                    }
+
                     itens[i]=false;
                 }
             }
