@@ -34,7 +34,7 @@ public class MapaDeRedeDeApoioFragment extends MapsFragment {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         List<MarkerOptions> listaMarker = setMarker();
         addMarkers(listaMarker);
-        animateCamera(new LatLng(-15.8402169, -47.9065729),7);
+        animateCamera(getLatLng(),7);
         try {
             Log.d(TAG, "location " + getLatLng());
         } catch (Exception e) {
@@ -76,7 +76,7 @@ public class MapaDeRedeDeApoioFragment extends MapsFragment {
             markerOptions = new MarkerOptions()
                     .title(redeApoioMarker.getTitle())
                     .position(redeApoioMarker.getLatLng())
-                    .snippet(redeApoioMarker.getTelefone())
+                    .snippet(redeApoioMarker.getTelefone()+"//"+redeApoioMarker.getEndereco())
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker));
 
             listaMarkers.add(markerOptions);

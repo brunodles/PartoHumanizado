@@ -27,6 +27,7 @@ import java.util.List;
 
 import br.com.PartoHumanizado.R;
 import br.com.PartoHumanizado.util.CsvAssetReader;
+import bruno.android.utils.gps.GpsClient;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
@@ -46,6 +47,8 @@ public abstract class MapsFragment extends BaseFragment {
     TextView textTelefone;
     @InjectView(R.id.view_info)
     RelativeLayout viewInfo;
+    @InjectView(R.id.et_endereco)
+    TextView textEndereco;
     @InjectView(R.id.view_background)
     RelativeLayout viewBackground;
     @InjectView(R.id.button_call_map)
@@ -58,12 +61,6 @@ public abstract class MapsFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_map_rede_apoio, container, false);
         ButterKnife.inject(this,rootView);
-     //   mapView = (MapView) rootView.findViewById(R.id.mapview);
-      //  viewInfo = (RelativeLayout)rootView.findViewById(R.id.view_info);
-      //  viewBackground = (RelativeLayout)rootView.findViewById(R.id.view_background);
-     //   textInfo = (TextView) rootView.findViewById(R.id.et_info_mapa);
-       // textTelefone = (TextView)rootView.findViewById();
-     //   buttonCall =(Button)rootView.findViewById(R.id.button_call_map);
         mapView.onCreate(savedInstanceState);
         viewBackground.setOnClickListener(hideViewOnclick);
         buttonCall.setOnClickListener(onClickListenerCall);
@@ -130,7 +127,8 @@ public abstract class MapsFragment extends BaseFragment {
 
         numeroTelefone = telefone;
         textInfo.setText(info);
-        textTelefone.setText(telefone);
+        textEndereco.setText(CsvAssetReader.splitString(telefone,"//")[1]);
+        textTelefone.setText(CsvAssetReader.splitString(telefone,"//")[0]);
 
     }
 
@@ -149,8 +147,18 @@ public abstract class MapsFragment extends BaseFragment {
         viewInfo.setVisibility(View.GONE);
         viewBackground.setVisibility(View.GONE);
         viewInfo.setAnimation(animationOut);
+        animateCamera(getLatLng(),7);
     }
 
+    private LatLng getLatLng() {
+        GpsClient gpsClient = new GpsClient(getActivity());
+        if (gpsClient.canGetLocation()) {
+            return new LatLng(gpsClient.getLatitude(), gpsClient.getLongitude());
+        } else {
+            gpsClient.showSettingsAlert();
+            return null;
+        }
+    }
     private View.OnClickListener hideViewOnclick =  new View.OnClickListener() {
         @Override
         public void onClick(View view) {

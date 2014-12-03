@@ -35,6 +35,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/et_defensoria"
             android:textStyle="bold"
             android:textColor="@color/green_denuncia"
             android:gravity="center"
@@ -68,9 +69,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
                 android:textColor="@color/green_denuncia"
                 android:gravity="center"
+                android:textStyle="bold"
+                android:id="@+id/et_call_denuncia"
                 android:layout_marginBottom="@dimen/margin_bottom_form_relato"
                 android:text="DISQUE 180"/>
 

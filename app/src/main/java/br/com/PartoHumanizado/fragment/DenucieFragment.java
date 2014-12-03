@@ -2,6 +2,8 @@ package br.com.PartoHumanizado.fragment;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -12,14 +14,20 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.parse.ParseObject;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.PartoHumanizado.R;
 import br.com.PartoHumanizado.fragment.base.BaseFragment;
+import br.com.PartoHumanizado.model.Defensoria;
+import br.com.PartoHumanizado.model.ListMarkerRedeApoio;
 import br.com.PartoHumanizado.model.Relato;
+import br.com.PartoHumanizado.util.CsvAssetReader;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
@@ -44,13 +52,20 @@ public class DenucieFragment extends BaseFragment {
     EditText etEmailVitima;
     @InjectView(R.id.button_save_relato)
     Button btSaveRelato;
+    @InjectView(R.id.et_defensoria)
+    TextView textDefensoria;
+    @InjectView(R.id.et_call_denuncia)
+    TextView etCallDenuncia;
 
     private final String TAG =  "PARTO-HUMANIZADO";
     private boolean itens[];
+    private String separatorRegex = "/";
+    private String numeroTelefone;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.ranking_denuncia,container,false);
         ButterKnife.inject(this, view);
+
         updateUI();
         return view;
     }
@@ -62,6 +77,8 @@ public class DenucieFragment extends BaseFragment {
         //spinerTypeViolency.setAdapter(adapter);
         editTextIntervencoes.setOnClickListener(onClickIntervention);
         btSaveRelato.setOnClickListener(onclickSave);
+        etCallDenuncia.setOnClickListener(onClickListenerCall);
+        addDefensoria();
     }
 
     private View.OnClickListener onClickIntervention = new View.OnClickListener() {
@@ -84,8 +101,6 @@ public class DenucieFragment extends BaseFragment {
 
             }
         });
-
-
                 AlertDialog alert = buildAlert.create();
                 alert.show();
     }
@@ -120,16 +135,39 @@ public class DenucieFragment extends BaseFragment {
         }
     };
     private void saveDenuncia(){
-
-
         Relato relato = new Relato();
-
         relato.setNomeVitima(etNomeVitima.getText().toString());
         relato.saveInBackground();
-
-
     }
 
+   private void addDefensoria(){
+       List<Defensoria> lista = new ArrayList<Defensoria>();
+
+       lista = Defensoria.readFromAssets(getActivity());
+
+       for(Defensoria defensoria : lista){
+           if(defensoria.getUf().equals("AL")){
+            Log.d(TAG, "nome defensoria "+defensoria.getUf());
+               textDefensoria.setText(defensoria.getNome());
+              numeroTelefone = defensoria.getTelefone();
+           }
+       }
+   }
+    private View.OnClickListener onClickListenerCall = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            calll();
+        }
+    };
+    private void calll(){
+
+        String[] strings = CsvAssetReader.splitString(numeroTelefone, separatorRegex);
+        if(strings[0]!=null){
+            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + strings[0]));
+            startActivity(intent);
+        }
+
+    }
     @Override
     public String getTitle() {
         return "Denuncie";
