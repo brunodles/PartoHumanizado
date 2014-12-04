@@ -18,6 +18,7 @@
     <color name="red2">#fbbccf</color>
     <color name="red3">#f9a8c0</color>
     <color name="red4">#f88aaf</color>
+    <color name="red5">#f678a2</color>
 
     <color name="b1">#43463f</color>
     <color name="b2">#41524c</color>
@@ -39,6 +40,7 @@
     <color name="primary">@color/pink2</color>
     <color name="primaryDark">@color/pink1</color>
     <color name="accent">@color/red4</color>
+    <color name="accent_dark">@color/red5</color>
 
     <color name="background">@color/red1</color>
     <color name="pagerStripBackground">@color/primary</color>
