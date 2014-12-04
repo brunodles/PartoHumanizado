@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import br.com.PartoHumanizado.R;
 import br.com.PartoHumanizado.fragment.base.BaseFragment;
 import bruno.android.utils.adapter.FragmentPageAdapter;
-import bruno.android.utils.adapter.FragmentStatePageAdapter;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
@@ -24,7 +23,7 @@ public class IntervencoesViolenciasFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_intervencoes_violencias, null);
+        View view = inflater.inflate(R.layout.fragment_pager, null);
         ButterKnife.inject(this, view);
 
         FragmentPageAdapter pageAdapter = new FragmentPageAdapter(getChildFragmentManager());

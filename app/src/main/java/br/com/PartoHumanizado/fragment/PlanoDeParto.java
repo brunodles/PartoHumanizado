@@ -9,17 +9,14 @@ import android.view.ViewGroup;
 
 import br.com.PartoHumanizado.R;
 import br.com.PartoHumanizado.fragment.base.BaseFragment;
-import br.com.PartoHumanizado.fragment.base.TextFragment;
 import bruno.android.utils.adapter.FragmentPageAdapter;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 /**
- * Created by bruno on 26/11/14.
+ * Created by bruno on 04/12/14.
  */
-public class InformacoesFragment extends BaseFragment {
-
-    private static final String TAG = "InformacoesFragment";
+public class PlanoDeParto extends BaseFragment {
 
     @InjectView(R.id.viewPager)
     ViewPager viewPager;
@@ -29,25 +26,21 @@ public class InformacoesFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_pager, null);
         ButterKnife.inject(this, view);
 
-
         FragmentPageAdapter pageAdapter = new FragmentPageAdapter(getChildFragmentManager());
 
-        addFragment(pageAdapter, TextFragment.create("partoHumanizado.txt", "Parto Humanizado"));
-        addFragment(pageAdapter, TextFragment.create("violenciaObstetrica.txt", "Violência Obstétrica"));
-        addFragment(pageAdapter, TextFragment.create("doulas.txt", "Doulas"));
-        addFragment(pageAdapter, TextFragment.create("planoDeParto.txt", "Plano de Parto"));
+        IntervencoesFragment intervencoes = new IntervencoesFragment();
+        pageAdapter.addFragment(intervencoes, intervencoes.getTitle());
+
+        ViolenciasFragment violenciasFragment = new ViolenciasFragment();
+        pageAdapter.addFragment(violenciasFragment, violenciasFragment.getTitle());
 
         viewPager.setAdapter(pageAdapter);
 
         return view;
     }
 
-    private void addFragment(FragmentPageAdapter pageAdapter, TextFragment fragment) {
-        pageAdapter.addFragment(fragment, fragment.getTitle());
-    }
-
     @Override
     public String getTitle() {
-        return "Informações";
+        return "Intevenções e Violências";
     }
 }

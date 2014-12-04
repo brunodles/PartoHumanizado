@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="trabalhoDeParto">
+        <item>presença de meu marido e doula.</item>
+        <item>sem tricotomia (raspagem dos pelos pubianos) e enema (lavagem intestinal).</item>
+        <item>sem perfusão contínua de soro e ou ocitocina</item>
+        <item>liberdade para beber água e sucos enquanto seja tolerado.</item>
+        <item>liberdade para caminhar e escolher a posição que quero ficar.</item>
+        <item>liberdade para o uso ilimitado da banheira e/ou chuveiro.</item>
+        <item>monitoramento fetal: apenas se for essencial, e não contínuo.</item>
+        <item>analgesia: peço que não seja oferecido anestésicos ou analgésicos. Eu pedirei quando achar necessário.</item>
+        <item>sem rompimento artificial de bolsa</item>
+    </string-array>
+    <string-array name="duranteParto">
+        <item>prefiro ficar de cócoras ou semi-sentada (costas apoiadas).</item>
+        <item>prefiro fazer força só durante as contrações, quando eu sentir vontade, em vez de ser guiada.</item>
+        <item>Gostaria de um ambiente especialmente calmo nesta hora.</item>
+        <item>Não vou tolerar que minha barriga seja empurrada para baixo.</item>
+        <item>episiotomia: só se for realmente necessário. Não gostaria que fosse uma intervenção de rotina.</item>
+        <item>gostaria que as luzes fossem apagadas (penumbra) e o ar condicionado desligado na hora do nascimento. Gostaria que meu bebe nascesse em ambiente calmo e silencioso.</item>
+        <item>gostaria de ter meu bebe colocado imediatamente no meu colo após o parto com liberdade para amamentar.</item>
+        <item>gostaria que o pai cortasse o cordão após o mesmo ter parado de pulsar.</item>
+    </string-array>
+    <string-array name="posParto">
+        <item>aguardar a expulsão espontânea da placenta, sem manobras, tração ou massagens. Se possível ter auxílio da amamentação.</item>
+        <item>ter o bebê comigo o tempo todo enquanto eu estiver na sala de parto, mesmo para exames e avaliação.</item>
+        <item>liberação para o apartamento o quanto antes com o bebê junto comigo. Quero estar ao seu lado nas primeiras horas de vida.</item>
+        <item>Alta hospitalar o quanto antes.</item>
+    </string-array>
+    <string-array name="cuidadosComBebe">
+        <item>administração de nitrato de prata ou antibióticos oftálmicos apenas se necessário e somente após o contato comigo nas primeiras horas de vida.</item>
+        <item>administração de vitamina K oral (nos comprometemos em dar continuidade nas doses).</item>
+        <item>quero fazer a amamentação sob livre demanda.</item>
+        <item>em hipótese alguma, oferecer água glicosada, bicos ou qualquer outra coisa ao bebê.</item>
+        <item>alojamento conjunto o tempo todo. Pedirei para levar o bebê caso esteja muito cansada ou necessite de ajuda.</item>
+        <item>gostaria de dar o banho no meu bebê e fazer as trocas (ou eu ou meu marido).</item>
+    </string-array>
+    <string-array name="casoDeCesarea">
+        <item>exijo o início do trabalho de parto antes de se resolver pela cesárea.</item>
+        <item>quero a presença da doula e de marido na sala de parto.</item>
+        <item>anestesia: peridural, sem sedação em momento algum.</item>
+        <item>na hora do nascimento gostaria que o campo fosse abaixado para que eu possa vê-lo nascer.</item>
+        <item>gostaria que as luzes e ruídos fossem reduzidas e o ar condicionado desligado.</item>
+        <item>após o nascimento, gostaria que colocassem o bebê sobre meu peito e que minhas mãos estejam livres para segura-lo.</item>
+        <item>gostaria de permanecer com o bebe no contato pele a pele enquanto estiver na sala de cirurgia sendo costurada.</item>
+        <item>também gostaria de amamentar o bebê e ter alojamento conjunto o quanto antes.</item>
+    </string-array>
+</resources>
