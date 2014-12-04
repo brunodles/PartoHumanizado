@@ -15,10 +15,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.SaveCallback;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -31,6 +34,7 @@ import br.com.PartoHumanizado.model.ListMarkerRedeApoio;
 import br.com.PartoHumanizado.model.Relato;
 import br.com.PartoHumanizado.model.UsuarioPreferences;
 import br.com.PartoHumanizado.util.CsvAssetReader;
+import br.com.PartoHumanizado.view.ProgressDialog;
 import bruno.android.utils.gps.GpsClient;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -68,6 +72,7 @@ public class DenucieFragment extends BaseFragment {
     private String separatorRegex = "/";
     private String numeroTelefone;
     private Defensoria defensoria;
+    private android.app.ProgressDialog progressDialog;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.ranking_denuncia,container,false);
@@ -166,9 +171,17 @@ public class DenucieFragment extends BaseFragment {
         }
     };
     private void saveDenuncia(){
+        openProgress();
         Relato relato = new Relato();
         relato.setNomeVitima(etNomeVitima.getText().toString());
-        relato.saveInBackground();
+        relato.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if(e==null){
+                    closeProgress();
+                }
+            }
+        });
     }
 
    private void addDefensoria(){
@@ -236,5 +249,20 @@ public class DenucieFragment extends BaseFragment {
     @Override
     public String getTitle() {
         return "Denuncie";
+    }
+
+
+    private void openProgress(){
+        progressDialog = new android.app.ProgressDialog(getActivity());
+        progressDialog.setMessage("Salvando seu dados, aguarde...");
+        progressDialog.setProgressStyle(android.app.ProgressDialog.STYLE_SPINNER);
+        progressDialog.setIndeterminate(true);
+        progressDialog.show();
+    }
+
+    private void closeProgress(){
+        if(progressDialog!=null){
+            progressDialog.hide();
+        }
     }
 }
