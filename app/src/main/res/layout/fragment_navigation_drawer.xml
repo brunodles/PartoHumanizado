@@ -1,24 +1,26 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/pink1"
-    android:paddingTop="25dp">
+    android:background="@color/background"
+    android:paddingTop="25dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
 
         <!--android:layout_width="100dp"-->
         <!--android:layout_height="100dp"-->
-    <ImageView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_gravity="right"
-        android:alpha="0.1"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_parto" />
+    <!--<ImageView-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_gravity="right"-->
+        <!--android:alpha="0.1"-->
+        <!--android:scaleType="fitCenter"-->
+        <!--android:src="@drawable/ic_parto" />-->
 
     <ListView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:choiceMode="singleChoice"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="0dp" />
+        android:divider="@drawable/divider_black"
+        android:dividerHeight="1dp" />
 </FrameLayout>

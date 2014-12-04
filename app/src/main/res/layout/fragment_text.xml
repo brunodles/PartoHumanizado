@@ -10,14 +10,6 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-        <ImageView
-            android:minHeight="180dp"
-            android:id="@+id/image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            tools:src="@color/black" />
-
         <TextView
             android:id="@+id/titulo"
             android:layout_width="match_parent"
@@ -25,6 +17,25 @@
             android:textSize="26sp"
             android:textStyle="bold"
             tools:text="Titulo" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="180dp"
+                android:scaleType="centerCrop"
+                tools:src="@color/black" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/round_rect_master" />
+        </FrameLayout>
+
 
         <TextView
             android:id="@+id/texto"

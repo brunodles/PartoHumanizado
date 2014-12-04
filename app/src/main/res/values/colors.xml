@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple">#d4bad4</color>
-    <color name="pink1">#f0ceef</color>
-    <color name="pink2">#f6e3f6</color>
+    <color name="pink1">#e8b4e6</color>
+    <color name="pink2">#f0ceef</color>
+    <color name="pink3">#f4dbf3</color>
 
-    <color name="primary">@color/pink1</color>
-    <color name="primaryDark">@color/purple</color>
-    <color name="background">@color/pink2</color>
-    <color name="accent">@color/white</color>
+    <color name="blue1">#5555d7</color>
+    <color name="blue2">#7676df</color>
+    <color name="blue3">#9797e6</color>
+
+    <color name="primary">@color/blue2</color>
+    <color name="primaryDark">@color/blue1</color>
+    <color name="accent">@color/pink1</color>
+
+    <color name="background">@color/white</color>
+    <color name="pagerStripBackground">@color/blue3</color>
+    <color name="pagerStripText">@color/white</color>
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
