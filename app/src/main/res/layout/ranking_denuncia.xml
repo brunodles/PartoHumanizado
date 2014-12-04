@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/margin_bottom_form_relato">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,10 +22,71 @@
             android:textScaleX="1.1"
             android:textSize="17sp"
             android:gravity="center"
-            android:layout_marginBottom="12dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="15dp"
             android:text="@string/title_denuncia"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/background_orgaos">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_defensoria"
+            android:textStyle="bold"
+            android:textColor="@color/green_denuncia"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/margin_bottom_form_relato"
+            android:text="DEFENSORIA PÚBLICA DO DISTRITO FEDERAL"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/background_orgaos">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/green_denuncia"
+                android:gravity="center"
+                android:layout_marginBottom="@dimen/margin_bottom_form_relato"
+                android:text="MINISTÉRIO PÚBLICO FEDERAL"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/background_orgaos">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/green_denuncia"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:id="@+id/et_call_denuncia"
+                android:layout_marginBottom="@dimen/margin_bottom_form_relato"
+                android:text="DISQUE 180"/>
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textScaleX="1.1"
+            android:textSize="17sp"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/margin_bottom_form_relato"
+            android:layout_marginBottom="15dp"
+            android:textColor="@color/black"
+            android:text="@string/info_denuncia"/>
         <EditText
             android:cursorVisible="false"
             android:focusable="false"
@@ -53,12 +119,23 @@
     </com.wrapp.floatlabelededittext.FloatLabeledEditText>
         <com.wrapp.floatlabelededittext.FloatLabeledEditText
             android:layout_width="match_parent"
+
             android:layout_height="wrap_content">
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/et_nome_medico"
                 android:hint="Nome Médico"
+                android:layout_marginBottom="@dimen/margin_bottom_form_relato"/>
+        </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+        <com.wrapp.floatlabelededittext.FloatLabeledEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_nome_casa_saude"
+                android:hint="Maternidade/Hospital"
                 android:layout_marginBottom="@dimen/margin_bottom_form_relato"/>
         </com.wrapp.floatlabelededittext.FloatLabeledEditText>
         <com.wrapp.floatlabelededittext.FloatLabeledEditText
@@ -90,7 +167,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/et_telfone_vitima"
-                android:hint="Telfone"
+                android:hint="Telefone"
                 android:inputType="text"
                 android:layout_marginBottom="@dimen/margin_bottom_form_relato"/>
         </com.wrapp.floatlabelededittext.FloatLabeledEditText>
@@ -98,9 +175,11 @@
             android:layout_width="170dp"
             android:layout_height="50dp"
             android:text="Enviar"
+            android:textColor="@color/white"
             android:id="@+id/button_save_relato"
             android:layout_gravity="center"
-            android:background="@android:color/holo_green_dark"/>
+            android:background="@color/green_denuncia"
+            android:layout_marginBottom="20dp"/>
     </LinearLayout>
-
+    </ScrollView>
 </LinearLayout>
