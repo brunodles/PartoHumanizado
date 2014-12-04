@@ -143,11 +143,31 @@ public abstract class MapsFragment extends BaseFragment {
     }
 
     private void hideInfo(){
-        Animation animationOut = AnimationUtils.loadAnimation(getActivity(),R.anim.slide_out_down);
-        viewInfo.setVisibility(View.GONE);
-        viewBackground.setVisibility(View.GONE);
-        viewInfo.setAnimation(animationOut);
-        animateCamera(getLatLng(),7);
+       animateMap();
+    }
+    private void animateMap(){
+        GpsClient gpsCliente = new GpsClient(getActivity());
+        if(gpsCliente.canGetLocation()){
+            try {
+                Animation animationOut = AnimationUtils.loadAnimation(getActivity(),R.anim.slide_out_down);
+                viewInfo.setVisibility(View.GONE);
+                viewBackground.setVisibility(View.GONE);
+                viewInfo.setAnimation(animationOut);
+
+                animateCamera(new LatLng(gpsCliente.getLatitude(), gpsCliente.getLongitude()),7);
+            } catch (Exception e) {
+                Log.e(TAG, "ERRO GEOLOCALIZAÇÃO FOURSQUARE "+e.getMessage());
+
+            }
+        }else{
+            Animation animationOut = AnimationUtils.loadAnimation(getActivity(),R.anim.slide_out_down);
+            viewInfo.setVisibility(View.GONE);
+            viewBackground.setVisibility(View.GONE);
+            viewInfo.setAnimation(animationOut);
+
+            animateCamera(new LatLng(15.7217621,-47.9382362),7);
+            gpsCliente.showSettingsAlert();
+        }
     }
 
     private LatLng getLatLng() {
@@ -162,7 +182,6 @@ public abstract class MapsFragment extends BaseFragment {
     private View.OnClickListener hideViewOnclick =  new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-
             hideInfo();
         }
     };

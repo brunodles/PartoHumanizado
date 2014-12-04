@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +15,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.SaveCallback;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -27,7 +32,10 @@ import br.com.PartoHumanizado.fragment.base.BaseFragment;
 import br.com.PartoHumanizado.model.Defensoria;
 import br.com.PartoHumanizado.model.ListMarkerRedeApoio;
 import br.com.PartoHumanizado.model.Relato;
+import br.com.PartoHumanizado.model.UsuarioPreferences;
 import br.com.PartoHumanizado.util.CsvAssetReader;
+import br.com.PartoHumanizado.view.ProgressDialog;
+import bruno.android.utils.gps.GpsClient;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
@@ -56,11 +64,15 @@ public class DenucieFragment extends BaseFragment {
     TextView textDefensoria;
     @InjectView(R.id.et_call_denuncia)
     TextView etCallDenuncia;
+    @InjectView(R.id.et_mpf)
+    TextView textMinisterioPublico;
 
     private final String TAG =  "PARTO-HUMANIZADO";
     private boolean itens[];
     private String separatorRegex = "/";
     private String numeroTelefone;
+    private Defensoria defensoria;
+    private android.app.ProgressDialog progressDialog;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.ranking_denuncia,container,false);
@@ -71,14 +83,30 @@ public class DenucieFragment extends BaseFragment {
     }
 
     private void updateUI(){
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
-                R.array.type_violency, R.layout.spinner_custom);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //spinerTypeViolency.setAdapter(adapter);
+
         editTextIntervencoes.setOnClickListener(onClickIntervention);
         btSaveRelato.setOnClickListener(onclickSave);
         etCallDenuncia.setOnClickListener(onClickListenerCall);
-        addDefensoria();
+        textDefensoria.setOnClickListener(onClickOpenInfoDefensoria);
+        textMinisterioPublico.setOnClickListener(onClickOpenWebView);
+
+
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+       saveUf();
+    }
+
+    private void showFragment() {
+        DefensoriaFragment defensoriaFragment = new DefensoriaFragment();
+        defensoriaFragment.setDefensoria(getDefensoria());
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, defensoriaFragment)
+                .commit();
     }
 
     private View.OnClickListener onClickIntervention = new View.OnClickListener() {
@@ -103,6 +131,14 @@ public class DenucieFragment extends BaseFragment {
         });
                 AlertDialog alert = buildAlert.create();
                 alert.show();
+    }
+
+    public Defensoria getDefensoria() {
+        return defensoria;
+    }
+
+    public void setDefensoria(Defensoria defensoria) {
+        this.defensoria = defensoria;
     }
 
     private DialogInterface.OnClickListener onClickPositive = new DialogInterface.OnClickListener() {
@@ -135,24 +171,66 @@ public class DenucieFragment extends BaseFragment {
         }
     };
     private void saveDenuncia(){
+        openProgress();
         Relato relato = new Relato();
         relato.setNomeVitima(etNomeVitima.getText().toString());
-        relato.saveInBackground();
+        relato.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if(e==null){
+                    closeProgress();
+                }
+            }
+        });
     }
 
    private void addDefensoria(){
        List<Defensoria> lista = new ArrayList<Defensoria>();
 
        lista = Defensoria.readFromAssets(getActivity());
+        UsuarioPreferences usuarioPreferences = new UsuarioPreferences(getActivity());
 
        for(Defensoria defensoria : lista){
-           if(defensoria.getUf().equals("AL")){
-            Log.d(TAG, "nome defensoria "+defensoria.getUf());
-               textDefensoria.setText(defensoria.getNome());
+           if(defensoria.getUf().equals(usuarioPreferences.getUf())){
+              textDefensoria.setText(defensoria.getNome());
               numeroTelefone = defensoria.getTelefone();
+              setDefensoria(defensoria);
+
            }
        }
    }
+    private void saveUf(){
+
+        GpsClient gpsClient = new GpsClient(getActivity());
+        UsuarioPreferences usuarioPreferences = new UsuarioPreferences(getActivity());
+        if(usuarioPreferences.getUf().isEmpty()){
+            usuarioPreferences.setUf(gpsClient.getAddress().getAdminArea().substring(0,2).toUpperCase());
+            addDefensoria();
+        }else{
+            addDefensoria();
+        }
+
+
+
+    }
+
+    private View.OnClickListener onClickOpenWebView =  new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            FormularioDenunciaMpf defensoriaFragment = new FormularioDenunciaMpf();
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, defensoriaFragment)
+                    .commit();
+        }
+    };
+
+    private View.OnClickListener onClickOpenInfoDefensoria = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            showFragment();
+        }
+    };
     private View.OnClickListener onClickListenerCall = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -171,5 +249,20 @@ public class DenucieFragment extends BaseFragment {
     @Override
     public String getTitle() {
         return "Denuncie";
+    }
+
+
+    private void openProgress(){
+        progressDialog = new android.app.ProgressDialog(getActivity());
+        progressDialog.setMessage("Salvando seu dados, aguarde...");
+        progressDialog.setProgressStyle(android.app.ProgressDialog.STYLE_SPINNER);
+        progressDialog.setIndeterminate(true);
+        progressDialog.show();
+    }
+
+    private void closeProgress(){
+        if(progressDialog!=null){
+            progressDialog.hide();
+        }
     }
 }
