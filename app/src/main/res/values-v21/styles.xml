@@ -1,12 +1,21 @@
 <resources>
 
     <!-- Base application theme. -->
-    <!--<style name="AppTheme" parent="android:Theme.Material.Light">-->
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light">-->
+    <!--&lt;!&ndash;<style name="AppTheme" parent="android:Theme.Material.Light">&ndash;&gt;-->
     <!--&lt;!&ndash;<style name="AppTheme" parent="android:Theme.Holo.Light">&ndash;&gt;-->
         <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
-        <!--<item name="android:colorPrimary">@color/roza</item>-->
-        <!--<item name="android:colorPrimaryDark">@color/roxo</item>-->
-        <!--<item name="android:colorAccent">@color/branco</item>-->
+
+        <!--&lt;!&ndash;<item name="android:statusBarColor">@android:color/transparent</item>&ndash;&gt;-->
+
+        <!--<item name="android:colorPrimary">@color/primary</item>-->
+        <!--&lt;!&ndash;<item name="android:colorPrimaryDark">@color/primaryDark</item>&ndash;&gt;-->
+        <!--<item name="android:colorAccent">@color/accent</item>-->
+
+        <!--<item name="android:colorBackground">@color/background</item>-->
+        <!--<item name="android:textColor">@color/defaultTextColor</item>-->
+
+        <!--<item name="android:textColorPrimary">@color/defaultTextColor</item>-->
     <!--</style>-->
 
 </resources>

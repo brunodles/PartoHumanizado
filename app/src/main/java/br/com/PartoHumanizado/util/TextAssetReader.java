@@ -42,7 +42,7 @@ public class TextAssetReader extends AssetReader {
         if (indexOf == -1)
             return false;
         String extension = line.substring(indexOf + 1);
-        System.out.println(extension);
+//        System.out.println(extension);
         if (imageFileExtensions.contains(extension))
             return true;
         return false;

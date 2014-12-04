@@ -49,14 +49,14 @@ public class TextFragment extends BaseFragment {
         super.onAttach(activity);
 //        tittleStr = getArguments().getString(KEY_TITTLE);
         String filename = getArguments().getString(KEY_ASSET_FILENAME);
-        Log.d(TAG, "onAttach filename: " + filename);
+//        Log.d(TAG, "onAttach filename: " + filename);
         TextAssetReader textAssetReader = new TextAssetReader(activity, filename);
         textAssetReader.setLineBreaker("<br/>");
         textAssetReader.read();
 
         imageFile = textAssetReader.getImage();
         tittleStr = textAssetReader.getTittle();
-        Log.d(TAG, "onAttach tittleStr " + tittleStr);
+//        Log.d(TAG, "onAttach tittleStr " + tittleStr);
         textStr = textAssetReader.getString();
     }
 

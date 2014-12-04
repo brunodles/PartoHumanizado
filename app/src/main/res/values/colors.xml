@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--<color name="pink1">#e8b4e6</color>-->
-    <!--<color name="pink2">#f0ceef</color>-->
-    <!--<color name="pink3">#f4dbf3</color>-->
 
-    <!--<color name="blue1">#5555d7</color>-->
-    <!--<color name="blue2">#7676df</color>-->
-    <!--<color name="blue3">#9797e6</color>-->
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="black_alpha7">#7000</color>
+    <color name="black_alpha1">#1000</color>
+
+    <color name="pink1">#edc4eb</color>
+    <color name="pink2">#f0ceef</color>
+    <color name="pink3">#f4dbf3</color>
+
+    <color name="blue1">#5555d7</color>
+    <color name="blue2">#7676df</color>
+    <color name="blue3">#9797e6</color>
+
+    <color name="red1">#ffefef</color>
+    <color name="red2">#fbbccf</color>
+    <color name="red3">#f9a8c0</color>
+    <color name="red4">#f88aaf</color>
+
+    <color name="b1">#43463f</color>
+    <color name="b2">#41524c</color>
+    <!--<color name="b3">#f88aaf</color>-->
+    <color name="b4">#bc4e59</color>
+    <color name="b5">#8b7278</color>
+    <color name="b6">#519fa9</color>
+    <color name="b7">#398c90</color>
 
     <color name="c1">#60bdaf</color>
     <color name="c2">#a1d8b1</color>
@@ -14,19 +33,18 @@
     <color name="c4">#f88aaf</color>
     <color name="c5">#455655</color>
 
-    <color name="primary">@color/c2</color>
-    <color name="primaryDark">@color/c1</color>
-    <color name="accent">@color/c4</color>
-
-    <color name="background">@color/c3</color>
-    <color name="pagerStripBackground">@color/c1</color>
-    <color name="pagerStripText">@color/white</color>
-    <color name="defaultTextColor">@color/c5</color>
-
-    <color name="white">#ffffff</color>
-    <color name="black">#000000</color>
-    <color name="black_alpha7">#7000</color>
-    <color name="black_alpha1">#1000</color>
+    <!--Cores do app-->
     <color name="green_denuncia">#34BF0A</color>
-    <color name="cardBackgroun">@color/white</color>
+
+    <color name="primary">@color/pink2</color>
+    <color name="primaryDark">@color/pink1</color>
+    <color name="accent">@color/red4</color>
+
+    <color name="background">@color/red1</color>
+    <color name="pagerStripBackground">@color/primary</color>
+    <color name="pagerStripText">@color/b2</color>
+    <color name="listBackground">#ddd</color>
+    <color name="cardBackground">@color/red1</color>
+
+    <color name="defaultTextColor">@color/b2</color>
 </resources>
