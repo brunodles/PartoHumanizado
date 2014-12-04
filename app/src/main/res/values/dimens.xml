@@ -2,4 +2,6 @@
 <resources>
     <dimen name="navigation_drawer_width">280dp</dimen>
     <dimen name="margin_bottom_form_relato">5dp</dimen>
+    <dimen name="margin_bottom_text_defensoria">5dp</dimen>
+    <dimen name="margin_top_text_defensoria">3dp</dimen>
 </resources>

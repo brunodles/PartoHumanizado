@@ -40,7 +40,7 @@
             android:textColor="@color/green_denuncia"
             android:gravity="center"
             android:layout_marginBottom="@dimen/margin_bottom_form_relato"
-            android:text="DEFENSORIA PÚBLICA DO DISTRITO FEDERAL"/>
+            android:text="DEFENSORIA PÚBLICA"/>
 
         </LinearLayout>
 
@@ -57,6 +57,7 @@
                 android:textColor="@color/green_denuncia"
                 android:gravity="center"
                 android:layout_marginBottom="@dimen/margin_bottom_form_relato"
+                android:id="@+id/et_mpf"
                 android:text="MINISTÉRIO PÚBLICO FEDERAL"/>
 
         </LinearLayout>

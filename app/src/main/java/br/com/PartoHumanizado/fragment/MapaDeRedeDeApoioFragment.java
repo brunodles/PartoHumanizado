@@ -32,14 +32,7 @@ public class MapaDeRedeDeApoioFragment extends MapsFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        List<MarkerOptions> listaMarker = setMarker();
-        addMarkers(listaMarker);
-        animateCamera(getLatLng(),7);
-        try {
-            Log.d(TAG, "location " + getLatLng());
-        } catch (Exception e) {
 
-        }
 
 
         return view;
@@ -48,18 +41,31 @@ public class MapaDeRedeDeApoioFragment extends MapsFragment {
     @Override
     public void onResume() {
         super.onResume();
-
+        List<MarkerOptions> listaMarker = setMarker();
+        addMarkers(listaMarker);
+        animateMap();
 
     }
 
-    private LatLng getLatLng() {
-        GpsClient gpsClient = new GpsClient(getActivity());
-        if (gpsClient.canGetLocation()) {
-            return new LatLng(gpsClient.getLatitude(), gpsClient.getLongitude());
-        } else {
-            gpsClient.showSettingsAlert();
-            return null;
+    private void animateMap(){
+        GpsClient gpsCliente = new GpsClient(getActivity());
+        if(gpsCliente.canGetLocation()){
+            try {
+                animateCamera(new LatLng(gpsCliente.getLatitude(), gpsCliente.getLongitude()),7);
+            } catch (Exception e) {
+                Log.e(TAG, "ERRO GEOLOCALIZAÇÃO FOURSQUARE "+e.getMessage());
+
+            }
+        }else{
+            gpsCliente.showSettingsAlert();
         }
+
+    }
+    private LatLng getLatLng() {
+
+        return null;
+
+
     }
 
     private List<MarkerOptions> setMarker() {

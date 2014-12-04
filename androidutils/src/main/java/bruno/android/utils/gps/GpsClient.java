@@ -5,6 +5,8 @@ import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -12,6 +14,9 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.provider.Settings;
 import android.util.Log;
+
+import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by sergio holanda on 25-Nov-14.
@@ -204,4 +209,23 @@ public class GpsClient extends Service implements LocationListener {
     public IBinder onBind(Intent arg0) {
         return null;
     }
+
+    public  Address getAddress() {
+        if (location == null)
+            return null;
+
+        final Geocoder geocoder = new Geocoder(this.mContext);
+        final List<Address> addresses;
+        try {
+            addresses = geocoder.getFromLocation(getLocation().getLatitude(),
+                    getLocation().getLongitude(), 1);
+        } catch (IOException e) {
+            return null;
+        }
+        if (addresses != null && !addresses.isEmpty())
+            return addresses.get(0);
+        else
+            return null;
+    }
 }
+

@@ -10,6 +10,8 @@ import com.parse.ParsePush;
 import com.parse.SaveCallback;
 
 import br.com.PartoHumanizado.model.Relato;
+import br.com.PartoHumanizado.model.UsuarioPreferences;
+import bruno.android.utils.gps.GpsClient;
 
 /**
  * Created by bruno on 11/11/14.
@@ -17,6 +19,8 @@ import br.com.PartoHumanizado.model.Relato;
 public class Application extends android.app.Application{
 
     private final String TAG = "PARTO-HUMANIZADO";
+
+
 
     @Override
     public void onCreate() {
@@ -28,6 +32,7 @@ public class Application extends android.app.Application{
         ParseObject.registerSubclass(Relato.class);
         //ParseFacebookUtils.initialize(getString(R.string.facebook_app_id));
         registerDevicePush();
+
     }
     private void registerDevicePush(){
         ParsePush.subscribeInBackground("", new SaveCallback() {
@@ -41,4 +46,5 @@ public class Application extends android.app.Application{
             }
         });
     }
+
 }
