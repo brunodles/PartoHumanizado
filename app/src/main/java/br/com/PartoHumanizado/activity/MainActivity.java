@@ -7,9 +7,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 
 import br.com.PartoHumanizado.R;
+import br.com.PartoHumanizado.adapter.MenuDrawerAdapter;
 import br.com.PartoHumanizado.fragment.DenucieFragment;
 import br.com.PartoHumanizado.fragment.InformacoesFragment;
-import br.com.PartoHumanizado.fragment.IntervencoesViolenciasFragment;
 import br.com.PartoHumanizado.fragment.MapaDasDoulasFragment;
 import br.com.PartoHumanizado.fragment.MapaDeRedeDeApoioFragment;
 import br.com.PartoHumanizado.fragment.MenuDrawerFragment;
@@ -84,5 +84,7 @@ public class MainActivity extends ActionBarActivity implements MenuDrawerFragmen
         fragmentManager.beginTransaction()
                 .replace(R.id.container, fragment)
                 .commit();
+        if (fragment instanceof MenuDrawerAdapter.DrawerItem)
+            setTitle(((MenuDrawerAdapter.DrawerItem) fragment).getTitle());
     }
 }
