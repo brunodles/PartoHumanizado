@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="pink1">#e8b4e6</color>
-    <color name="pink2">#f0ceef</color>
-    <color name="pink3">#f4dbf3</color>
+    <!--<color name="pink1">#e8b4e6</color>-->
+    <!--<color name="pink2">#f0ceef</color>-->
+    <!--<color name="pink3">#f4dbf3</color>-->
 
-    <color name="blue1">#5555d7</color>
-    <color name="blue2">#7676df</color>
-    <color name="blue3">#9797e6</color>
+    <!--<color name="blue1">#5555d7</color>-->
+    <!--<color name="blue2">#7676df</color>-->
+    <!--<color name="blue3">#9797e6</color>-->
 
-    <color name="primary">@color/blue2</color>
-    <color name="primaryDark">@color/blue1</color>
-    <color name="accent">@color/pink1</color>
+    <color name="c1">#60bdaf</color>
+    <color name="c2">#a1d8b1</color>
+    <color name="c3">#edfcc2</color>
+    <color name="c4">#f88aaf</color>
+    <color name="c5">#455655</color>
 
-    <color name="background">@color/white</color>
-    <color name="pagerStripBackground">@color/blue3</color>
+    <color name="primary">@color/c2</color>
+    <color name="primaryDark">@color/c1</color>
+    <color name="accent">@color/c4</color>
+
+    <color name="background">@color/c3</color>
+    <color name="pagerStripBackground">@color/c1</color>
     <color name="pagerStripText">@color/white</color>
+    <color name="defaultTextColor">@color/c5</color>
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="black_alpha7">#7000</color>
     <color name="black_alpha1">#1000</color>
     <color name="green_denuncia">#34BF0A</color>
+    <color name="cardBackgroun">@color/white</color>
 </resources>

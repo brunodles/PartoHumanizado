@@ -62,7 +62,7 @@ public class ViolenciasAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public class ViewHolder implements View.OnClickListener {
+    public class ViewHolder {
         View rootView;
 
         @InjectView(R.id.container)
@@ -75,7 +75,6 @@ public class ViolenciasAdapter extends BaseAdapter {
 
         public ViewHolder(View rootView) {
             this.rootView = rootView;
-            rootView.setOnClickListener(this);
             ButterKnife.inject(this, rootView);
         }
 
@@ -83,25 +82,6 @@ public class ViolenciasAdapter extends BaseAdapter {
             this.violencia = violencia;
             titulo.setText(violencia.getTitulo());
             texto.setText(violencia.getTextsAsString());
-            updateVisibility();
-        }
-
-        @Override
-        public void onClick(View v) {
-            boolean show = !violencia.isExpanded();
-            violencia.setExpanded(show);
-            updateVisibility();
-        }
-
-        private void updateVisibility() {
-            boolean expanded = violencia.isExpanded();
-            texto.setVisibility(expanded ? View.VISIBLE : View.GONE);
-
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                float px = expanded ? getAsDp(5) : 0f;
-                container.setTranslationZ(px);
-            }
         }
 
         private float getAsDp(int dpValue) {
