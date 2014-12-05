@@ -13,6 +13,7 @@ import br.com.PartoHumanizado.fragment.InformacoesFragment;
 import br.com.PartoHumanizado.fragment.MapaDasDoulasFragment;
 import br.com.PartoHumanizado.fragment.MapaDeRedeDeApoioFragment;
 import br.com.PartoHumanizado.fragment.MenuDrawerFragment;
+import br.com.PartoHumanizado.fragment.PlanoDePartoFragment;
 import br.com.PartoHumanizado.fragment.SobreFragment;
 import br.com.PartoHumanizado.fragment.ViolenciasFragment;
 import br.com.PartoHumanizado.viewholder.MenuDrawerViewHolder;
@@ -44,6 +45,9 @@ public class MainActivity extends ActionBarActivity implements MenuDrawerFragmen
 
 //        IntervencoesViolenciasFragment intervencoesViolenciasFragment = new IntervencoesViolenciasFragment();
 //        menuDrawer.add(intervencoesViolenciasFragment);
+
+        PlanoDePartoFragment planoDePartoFragment = new PlanoDePartoFragment();
+        menuDrawer.add(planoDePartoFragment);
 
         DenucieFragment denucieFragment = new DenucieFragment();
         menuDrawer.add(denucieFragment);

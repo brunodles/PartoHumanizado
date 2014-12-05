@@ -20,7 +20,6 @@ public abstract class BaseListFragment extends ListFragment implements MenuDrawe
     public View getMenuView(int position, View convertView, ViewGroup parent) {
         ItemMenuDrawerViewHolder holder = ItemMenuDrawerViewHolder.getView(convertView, parent);
         holder.setTittle(getTitle());
-
         return holder.view;
     }
 

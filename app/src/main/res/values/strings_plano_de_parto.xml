@@ -36,7 +36,7 @@
         <item>alojamento conjunto o tempo todo. Pedirei para levar o bebê caso esteja muito cansada ou necessite de ajuda.</item>
         <item>gostaria de dar o banho no meu bebê e fazer as trocas (ou eu ou meu marido).</item>
     </string-array>
-    <string-array name="casoDeCesarea">
+    <string-array name="casoCesarea">
         <item>exijo o início do trabalho de parto antes de se resolver pela cesárea.</item>
         <item>quero a presença da doula e de marido na sala de parto.</item>
         <item>anestesia: peridural, sem sedação em momento algum.</item>
