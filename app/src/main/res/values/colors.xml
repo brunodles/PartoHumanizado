@@ -19,15 +19,20 @@
     <color name="red3">#f9a8c0</color>
     <color name="red4">#f88aaf</color>
     <color name="red5">#f678a2</color>
-
+    
+    <color name="a1">#fe4365</color>
+    <color name="a2">#fc9d9a</color>
+    <color name="a2_dark">#fb9592</color>
+    <color name="a2_light">#fca8a5</color>
+    <color name="a3">#f9cdad</color>
+    <color name="a4">#c8c8a9</color>
+    <color name="a5">#83af9b</color>
     <color name="b1">#43463f</color>
     <color name="b2">#41524c</color>
-    <!--<color name="b3">#f88aaf</color>-->
     <color name="b4">#bc4e59</color>
     <color name="b5">#8b7278</color>
     <color name="b6">#519fa9</color>
     <color name="b7">#398c90</color>
-
     <color name="c1">#60bdaf</color>
     <color name="c2">#a1d8b1</color>
     <color name="c3">#edfcc2</color>
@@ -37,13 +42,13 @@
     <!--Cores do app-->
     <color name="green_denuncia">#34BF0A</color>
 
-    <color name="primary">@color/pink2</color>
-    <color name="primaryDark">@color/pink1</color>
-    <color name="accent">@color/red4</color>
-    <color name="accent_dark">@color/red5</color>
+    <color name="primary">@color/a2</color>
+    <color name="primaryDark">@color/a2_dark</color>
+    <color name="accent">@color/c4</color>
+    <color name="accent_dark">@color/b4</color>
 
     <color name="background">@color/red1</color>
-    <color name="pagerStripBackground">@color/primary</color>
+    <color name="pagerStripBackground">@color/a2_light</color>
     <color name="pagerStripText">@color/b2</color>
     <color name="listBackground">#ddd</color>
     <color name="cardBackground">@color/red1</color>

@@ -8,24 +8,26 @@
         <!--<item name="statusBarColor">@android:color/transparent</item>-->
         <item name="android:textColorPrimary">@color/defaultTextColor</item>
         <item name="colorPrimary">@color/primary</item>
-        <!--<item name="colorPrimaryDark">@color/primaryDark</item>-->
+        <item name="colorPrimaryDark">@color/primaryDark</item>
         <item name="colorAccent">@color/accent</item>
         <item name="android:colorBackground">@color/background</item>
         <item name="android:textColor">@color/defaultTextColor</item>
 
-        <!--<item name="android:actionBarStyle">@style/MyActionBar</item>-->
-        <!--<item name="actionBarStyle">@style/MyActionBar</item>-->
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <item name="actionBarStyle">@style/MyActionBar</item>
+
+        <item name="android:windowActionBarOverlay">true</item>
     </style>
 
     <!-- style for the action bar backgrounds -->
-    <!--<style name="MyActionBar" parent="Theme.AppCompat.Light">-->
-        <!--<item name="android:background">@color/primary</item>-->
-        <!--<item name="background">@color/primary</item>-->
+    <style name="MyActionBar" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/primary</item>
+        <item name="background">@color/primary</item>
         <!--<item name="android:titleTextStyle">@style/MyTheme.ActionBar.TitleTextStyle</item>-->
         <!--<item name="android:subtitleTextStyle">@style/MyTheme.ActionBar.TitleTextStyle</item>-->
         <!--<item name="titleTextStyle">@style/MyTheme.ActionBar.TitleTextStyle</item>-->
         <!--<item name="subtitleTextStyle">@style/MyTheme.ActionBar.TitleTextStyle</item>-->
-    <!--</style>-->
+    </style>
     <!--<style name="MyTheme.ActionBar.TitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">-->
         <!--<item name="android:textColor">@color/defaultTextColor</item>-->
     <!--</style>-->
