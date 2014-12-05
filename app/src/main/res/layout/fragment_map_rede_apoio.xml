@@ -41,8 +41,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="90dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
             android:id="@+id/ll_info_mapa"
-            android:background="@color/green_denuncia"
+            android:background="@drawable/border_bottom_maps_info"
             android:orientation="vertical">
         <TextView
             android:layout_marginTop="15dp"
@@ -53,7 +55,7 @@
             android:id="@+id/et_info_mapa"
             android:textSize="20sp"
             android:layout_marginBottom="3dp"
-            android:textColor="@android:color/white"/>
+            />
             <TextView
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
@@ -63,7 +65,7 @@
                 android:textSize="12sp"
                 android:ellipsize="end"
                 android:layout_marginBottom="15dp"
-                android:textColor="@android:color/white"/>
+                />
         </LinearLayout>
 
 
@@ -84,7 +86,7 @@
                 android:gravity="center"
                 android:textSize="20sp"
                 android:textAlignment="center"
-                android:textColor="@android:color/holo_green_dark"/>
+                />
             <Button
                 android:layout_width="60dp"
                 android:layout_height="60dp"

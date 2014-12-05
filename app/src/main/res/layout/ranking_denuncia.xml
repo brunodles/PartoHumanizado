@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:background="@color/white"
+    android:background="@color/background"
     android:layout_height="match_parent">
     <ScrollView
         android:layout_width="match_parent"
@@ -22,7 +22,6 @@
             android:textScaleX="1.1"
             android:textSize="17sp"
             android:gravity="center"
-            android:textColor="@color/black"
             android:layout_marginBottom="15dp"
             android:text="@string/title_denuncia"/>
 
@@ -37,7 +36,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/et_defensoria"
             android:textStyle="bold"
-            android:textColor="@color/green_denuncia"
+            android:textColor="@color/c1"
             android:gravity="center"
             android:layout_marginBottom="@dimen/margin_bottom_form_relato"
             android:text="DEFENSORIA PÚBLICA"/>
@@ -54,10 +53,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textColor="@color/green_denuncia"
                 android:gravity="center"
                 android:layout_marginBottom="@dimen/margin_bottom_form_relato"
                 android:id="@+id/et_mpf"
+                android:textColor="@color/c1"
                 android:text="MINISTÉRIO PÚBLICO FEDERAL"/>
 
         </LinearLayout>
@@ -70,7 +69,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/green_denuncia"
+                android:textColor="@color/c1"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:id="@+id/et_call_denuncia"
@@ -126,6 +125,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/et_nome_medico"
+                android:inputType="textCapWords"
                 android:hint="Nome Médico"
                 android:layout_marginBottom="@dimen/margin_bottom_form_relato"/>
         </com.wrapp.floatlabelededittext.FloatLabeledEditText>
@@ -136,6 +136,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/et_nome_casa_saude"
+                android:inputType="textCapWords"
                 android:hint="Maternidade/Hospital"
                 android:layout_marginBottom="@dimen/margin_bottom_form_relato"/>
         </com.wrapp.floatlabelededittext.FloatLabeledEditText>
@@ -146,6 +147,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/et_nome_vitima"
+                android:inputType="textCapWords"
                 android:hint="Nome Vítima"
                 android:layout_marginBottom="@dimen/margin_bottom_form_relato"/>
         </com.wrapp.floatlabelededittext.FloatLabeledEditText>
@@ -169,7 +171,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/et_telfone_vitima"
                 android:hint="Telefone"
-                android:inputType="text"
+                android:inputType="phone"
                 android:layout_marginBottom="@dimen/margin_bottom_form_relato"/>
         </com.wrapp.floatlabelededittext.FloatLabeledEditText>
         <Button

@@ -6,40 +6,29 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.SaveCallback;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.PartoHumanizado.R;
 import br.com.PartoHumanizado.fragment.base.BaseFragment;
 import br.com.PartoHumanizado.model.Defensoria;
-import br.com.PartoHumanizado.model.ListMarkerRedeApoio;
 import br.com.PartoHumanizado.model.Relato;
 import br.com.PartoHumanizado.model.UsuarioPreferences;
-import br.com.PartoHumanizado.util.CsvAssetReader;
-import br.com.PartoHumanizado.view.ProgressDialog;
 import bruno.android.utils.gps.GpsClient;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-
-import br.com.PartoHumanizado.fragment.base.WebViewFragment;
 
 /**
  * Created by bruno on 22/11/14.
@@ -66,6 +55,8 @@ public class DenucieFragment extends BaseFragment {
     TextView etCallDenuncia;
     @InjectView(R.id.et_mpf)
     TextView textMinisterioPublico;
+    @InjectView(R.id.et_nome_casa_saude)
+    EditText etCasaSaude;
 
     private final String TAG =  "PARTO-HUMANIZADO";
     private boolean itens[];
@@ -174,16 +165,30 @@ public class DenucieFragment extends BaseFragment {
         openProgress();
         Relato relato = new Relato();
         relato.setNomeVitima(etNomeVitima.getText().toString());
+        relato.setCrmMedico(etCrmMedico.getText().toString());
+        relato.setEmail(etEmailVitima.getText().toString());
+        relato.setIntituicao(etCasaSaude.getText().toString());
+        relato.setNomeMedico(etNomeMedico.getText().toString());
+        relato.setViolencica(editTextIntervencoes.getText().toString());
         relato.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
                 if(e==null){
                     closeProgress();
+                    resetForm();
                 }
             }
         });
     }
 
+    private void resetForm(){
+       etNomeVitima.setText("");
+       etCrmMedico.setText("");
+       etEmailVitima.setText("");
+       etCasaSaude.setText("");
+       etNomeMedico.setText("");
+       editTextIntervencoes.setText("");
+    }
    private void addDefensoria(){
        List<Defensoria> lista = new ArrayList<Defensoria>();
 
@@ -239,11 +244,10 @@ public class DenucieFragment extends BaseFragment {
     };
     private void calll(){
 
-        String[] strings = CsvAssetReader.splitString(numeroTelefone, separatorRegex);
-        if(strings[0]!=null){
-            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + strings[0]));
+
+            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "180"));
             startActivity(intent);
-        }
+
 
     }
     @Override

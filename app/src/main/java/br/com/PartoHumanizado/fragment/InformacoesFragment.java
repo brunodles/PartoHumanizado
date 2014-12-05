@@ -48,6 +48,6 @@ public class InformacoesFragment extends BaseFragment {
 
     @Override
     public String getTitle() {
-        return "Informações";
+        return "Saiba Mais";
     }
 }
