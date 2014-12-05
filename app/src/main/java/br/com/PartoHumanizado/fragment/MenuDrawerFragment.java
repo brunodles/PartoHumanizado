@@ -1,6 +1,8 @@
 package br.com.PartoHumanizado.fragment;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
@@ -17,6 +19,8 @@ import br.com.PartoHumanizado.adapter.MenuDrawerAdapter;
  */
 public class MenuDrawerFragment extends ListFragment {
 
+    public static final String PREFERENCES_NAME = "menuDrawer";
+    public static final String KEY_LAST_SELECTED = "lastSelected";
     private MenuDrawerAdapter menuDrawerAdapter = new MenuDrawerAdapter();
     MenuListener menuListener;
 
@@ -44,9 +48,23 @@ public class MenuDrawerFragment extends ListFragment {
     }
 
     @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
     public void onStart() {
-        setListAdapter(menuDrawerAdapter);
         super.onStart();
+        setListAdapter(menuDrawerAdapter);
+        showLastSelectedFragment(getActivity());
+    }
+
+    private void showLastSelectedFragment(Context context) {
+        if (menuListener == null)
+            return;
+        int position = getPreferences(context).getInt(KEY_LAST_SELECTED, 0);
+        MenuDrawerAdapter.DrawerItem item = menuDrawerAdapter.getItem(position);
+        menuListener.onMenuSelect(position, item.getTitle(), item.getFragment());
     }
 
     public MenuDrawerAdapter getMenuDrawerAdapter() {
@@ -61,6 +79,19 @@ public class MenuDrawerFragment extends ListFragment {
             MenuDrawerAdapter.DrawerItem item = menuDrawerAdapter.getItem(position);
             menuListener.onMenuSelect(position, item.getTitle(), item.getFragment());
         }
+        Context context = l.getContext();
+        saveLastSelected(position, context);
+    }
+
+    private void saveLastSelected(int position, Context context) {
+        SharedPreferences preferences = getPreferences(context);
+        SharedPreferences.Editor edit = preferences.edit();
+        edit.putInt(KEY_LAST_SELECTED, position);
+        edit.commit();
+    }
+
+    private SharedPreferences getPreferences(Context context) {
+        return context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
     }
 
     public static interface MenuListener {
