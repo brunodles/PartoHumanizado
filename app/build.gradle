@@ -52,6 +52,7 @@ dependencies {
     //    // Floating action button
     //    compile 'com.melnykov:floatingactionbutton:1.0.+'
     //    // Shape Image View
-    //    compile 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
+      compile 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
     compile 'com.wrapp.floatlabelededittext:library:0.0.5'
+    compile 'com.github.markushi:circlebutton:1.1'
 }

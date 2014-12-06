@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.github.siyamed.shapeimageview.CircularImageView;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -52,7 +53,7 @@ public abstract class MapsFragment extends BaseFragment {
     @InjectView(R.id.view_background)
     RelativeLayout viewBackground;
     @InjectView(R.id.button_call_map)
-    Button buttonCall;
+    CircularImageView buttonCall;
     private String numeroTelefone;
     private String separatorRegex = "/";
 

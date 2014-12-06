@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true">
@@ -87,12 +88,16 @@
                 android:textSize="20sp"
                 android:textAlignment="center"
                 />
-            <Button
+            <com.github.siyamed.shapeimageview.CircularImageView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:src="@drawable/ic_call"
+                android:layout_marginBottom="5dp"
                 android:id="@+id/button_call_map"
-                android:background="@drawable/ic_call"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                app:siBorderWidth="3dp"
+                app:siBorderColor="@color/green_denuncia"/>
+
 
         </LinearLayout>
 

@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.github.siyamed.shapeimageview.CircularImageView;
 import com.parse.ParseException;
 import com.parse.SaveCallback;
 
@@ -49,12 +50,12 @@ public class DenucieFragment extends BaseFragment {
     EditText etEmailVitima;
     @InjectView(R.id.button_save_relato)
     Button btSaveRelato;
-    @InjectView(R.id.et_defensoria)
-    TextView textDefensoria;
-    @InjectView(R.id.et_call_denuncia)
-    TextView etCallDenuncia;
-    @InjectView(R.id.et_mpf)
-    TextView textMinisterioPublico;
+    @InjectView(R.id.button_click_call)
+    CircularImageView buttonCallDenuncia;
+    @InjectView(R.id.button_defensoria)
+    CircularImageView buttonDefensoria;
+    @InjectView(R.id.button_ministerio)
+    CircularImageView buttonMinisterioPublico;
     @InjectView(R.id.et_nome_casa_saude)
     EditText etCasaSaude;
 
@@ -77,9 +78,9 @@ public class DenucieFragment extends BaseFragment {
 
         editTextIntervencoes.setOnClickListener(onClickIntervention);
         btSaveRelato.setOnClickListener(onclickSave);
-        etCallDenuncia.setOnClickListener(onClickListenerCall);
-        textDefensoria.setOnClickListener(onClickOpenInfoDefensoria);
-        textMinisterioPublico.setOnClickListener(onClickOpenWebView);
+        buttonCallDenuncia.setOnClickListener(onClickListenerCall);
+        buttonDefensoria.setOnClickListener(onClickOpenInfoDefensoria);
+        buttonMinisterioPublico.setOnClickListener(onClickOpenWebView);
 
 
 
@@ -197,7 +198,7 @@ public class DenucieFragment extends BaseFragment {
 
        for(Defensoria defensoria : lista){
            if(defensoria.getUf().equals(usuarioPreferences.getUf())){
-              textDefensoria.setText(defensoria.getNome());
+              //textDefensoria.setText(defensoria.getNome());
               numeroTelefone = defensoria.getTelefone();
               setDefensoria(defensoria);
 
@@ -210,7 +211,7 @@ public class DenucieFragment extends BaseFragment {
         UsuarioPreferences usuarioPreferences = new UsuarioPreferences(getActivity());
         if(usuarioPreferences.getUf().isEmpty()){
             usuarioPreferences.setUf(gpsClient.getAddress().getAdminArea().substring(0,2).toUpperCase());
-            addDefensoria();
+           addDefensoria();
         }else{
             addDefensoria();
         }

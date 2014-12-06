@@ -73,7 +73,7 @@ public class MapaDasDoulasFragment extends MapsFragment {
                     .title(redeApoioMarker.getTitle())
                     .position(redeApoioMarker.getLatLng())
                     .snippet(redeApoioMarker.getTelefone()+"//"+redeApoioMarker.getEndereco())
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker));
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.doula_marker));
 
             listaMarkers.add(markerOptions);
             //  addInfo(redeApoioMarker.getTitle(),redeApoioMarker.getTelefone());
