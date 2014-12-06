@@ -43,15 +43,17 @@
             android:orientation="vertical"
             android:background="@android:color/transparent">
             <com.andexert.library.RippleView
-                android:id="@+id/more"
+                android:id="@+id/more_defensoria"
                 android:layout_width="?android:actionBarSize"
                 android:layout_height="?android:actionBarSize"
                 android:layout_toLeftOf="@+id/more2"
+                app:rv_rippleDuration="300"
+                app:rv_alpha="110"
                 android:layout_margin="5dp"
                 ripple:rv_centered="true">
             <com.github.siyamed.shapeimageview.CircularImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:src="@drawable/defensoria"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/button_defensoria"
@@ -80,11 +82,13 @@
                 android:layout_width="?android:actionBarSize"
                 android:layout_height="?android:actionBarSize"
                 android:layout_toLeftOf="@+id/more2"
+                app:rv_rippleDuration="300"
+                app:rv_alpha="110"
                 android:layout_margin="5dp"
                 ripple:rv_centered="true">
             <com.github.siyamed.shapeimageview.CircularImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:src="@drawable/ic_call"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/button_click_call"
@@ -109,15 +113,17 @@
             android:gravity="center"
             android:orientation="vertical">
             <com.andexert.library.RippleView
-                android:id="@+id/more_defensoria"
+                android:id="@+id/more_ministerio"
                 android:layout_width="?android:actionBarSize"
                 android:layout_height="?android:actionBarSize"
                 android:layout_toLeftOf="@+id/more2"
+                app:rv_rippleDuration="300"
+                app:rv_alpha="110"
                 android:layout_margin="5dp"
                 ripple:rv_centered="true">
             <com.github.siyamed.shapeimageview.CircularImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:src="@drawable/defensoria"
                 android:layout_marginBottom="5dp"
                 app:siBorderWidth="3dp"
@@ -228,15 +234,28 @@
                 android:inputType="phone"
                 android:layout_marginBottom="@dimen/margin_bottom_form_relato"/>
         </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+        <com.andexert.library.RippleView
+            android:layout_gravity="center"
+            android:id="@+id/riiple_button_save"
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:layout_toLeftOf="@+id/more2"
+            app:rv_rippleDuration="500"
+            app:rv_alpha="170"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            ripple:rv_centered="true">
         <Button
             android:layout_width="170dp"
             android:layout_height="50dp"
             android:text="Enviar"
+            android:textAlignment="center"
             android:textColor="@color/white"
             android:id="@+id/button_save_relato"
             android:layout_gravity="center"
             android:background="@color/green_denuncia"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="0dp"/>
+        </com.andexert.library.RippleView>
     </LinearLayout>
     </ScrollView>
 </LinearLayout>

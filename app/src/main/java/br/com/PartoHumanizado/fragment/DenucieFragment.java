@@ -15,16 +15,17 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.andexert.library.RippleView;
 import com.github.siyamed.shapeimageview.CircularImageView;
@@ -71,7 +72,13 @@ public class DenucieFragment extends BaseFragment {
     @InjectView(R.id.et_nome_casa_saude)
     EditText etCasaSaude;
     @InjectView(R.id.more_call)
-    RippleView rippeCall;
+    RippleView rippleCall;
+    @InjectView(R.id.more_defensoria)
+    RippleView rippleDefensoria;
+    @InjectView(R.id.more_ministerio)
+    RippleView rippleMinisterio;
+    @InjectView(R.id.riiple_button_save)
+    RippleView rippleButtonSave;
 
     private final String TAG =  "PARTO-HUMANIZADO";
     private boolean itens[];
@@ -79,11 +86,11 @@ public class DenucieFragment extends BaseFragment {
     private String numeroTelefone;
     private Defensoria defensoria;
     private android.app.ProgressDialog progressDialog;
+    private final int DELAY_HANDLER = 1000;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.ranking_denuncia,container,false);
         ButterKnife.inject(this, view);
-
         updateUI();
         return view;
     }
@@ -91,14 +98,10 @@ public class DenucieFragment extends BaseFragment {
     private void updateUI(){
 
         editTextIntervencoes.setOnClickListener(onClickIntervention);
-        btSaveRelato.setOnClickListener(onclickSave);
-      //  buttonCallDenuncia.setOnClickListener(onClickListenerCall);
-        buttonDefensoria.setOnClickListener(onClickOpenInfoDefensoria);
-        buttonMinisterioPublico.setOnClickListener(onClickOpenWebView);
-       // rippeCall.setOnClickListener(onClickListenerCall);
-
-
-
+        rippleDefensoria.setOnClickListener(onClickOpenInfoDefensoria);
+        rippleMinisterio.setOnClickListener(onClickOpenWebView);
+        rippleCall.setOnClickListener(onClickListenerCall);
+        rippleButtonSave.setOnClickListener(onclickSave);
     }
 
     @Override
@@ -120,7 +123,6 @@ public class DenucieFragment extends BaseFragment {
         @Override
         public void onClick(View view) {
             buildDialogState();
-
         }
 
     };
@@ -155,10 +157,9 @@ public class DenucieFragment extends BaseFragment {
             String selected = "";
             for (int i = 0; i < getResources().getStringArray(R.array.type_intervention).length; i++) {
                 if (itens[i]) {
-                   Log.d(TAG,"Selected itens "+array[i]);
 
                     if(array.length>1){
-                        selected += array[i]+ " , ";
+                        selected += array[i]+ " ";
                     }else{
                         selected = array[i];
                     }
@@ -173,30 +174,58 @@ public class DenucieFragment extends BaseFragment {
     private View.OnClickListener onclickSave = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    saveDenuncia();
+                }
+            }, DELAY_HANDLER);
 
-            saveDenuncia();
         }
     };
     private void saveDenuncia(){
-        openProgress();
-        Relato relato = new Relato();
-        relato.setNomeVitima(etNomeVitima.getText().toString());
-        relato.setCrmMedico(etCrmMedico.getText().toString());
-        relato.setEmail(etEmailVitima.getText().toString());
-        relato.setIntituicao(etCasaSaude.getText().toString());
-        relato.setNomeMedico(etNomeMedico.getText().toString());
-        relato.setViolencica(editTextIntervencoes.getText().toString());
-        relato.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                if(e==null){
-                    closeProgress();
-                    resetForm();
+        if(isFormValidate()){
+            openProgress();
+            Relato relato = new Relato();
+            relato.setNomeVitima(etNomeVitima.getText().toString());
+            relato.setCrmMedico(etCrmMedico.getText().toString());
+            relato.setEmail(etEmailVitima.getText().toString());
+            relato.setIntituicao(etCasaSaude.getText().toString());
+            relato.setNomeMedico(etNomeMedico.getText().toString());
+            relato.setViolencica(editTextIntervencoes.getText().toString());
+            relato.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    if(e==null){
+                        closeProgress();
+                        resetForm();
+                    }
                 }
-            }
-        });
-    }
+            });
+        }else{
+            Toast.makeText(getActivity(),"Preencha todo o formulário!",Toast.LENGTH_LONG).show();
+        }
 
+    }
+    private boolean isFormValidate(){
+            if(
+                TextUtils.isEmpty(etNomeVitima.getText().toString()) ||
+                TextUtils.isEmpty(etCrmMedico.getText().toString())||
+                TextUtils.isEmpty(etEmailVitima.getText().toString())||
+                TextUtils.isEmpty(etCasaSaude.getText().toString())||
+                TextUtils.isEmpty(etNomeMedico.getText().toString())||
+                TextUtils.isEmpty(editTextIntervencoes.getText().toString())
+             ){
+               return false;
+
+            }else{
+                return true;
+
+        }
+
+
+    }
     private void resetForm(){
        etNomeVitima.setText("");
        etCrmMedico.setText("");
@@ -238,33 +267,57 @@ public class DenucieFragment extends BaseFragment {
     private View.OnClickListener onClickOpenWebView =  new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            FormularioDenunciaMpf defensoriaFragment = new FormularioDenunciaMpf();
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.container, defensoriaFragment)
-                    .commit();
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+             showWebView();
+                }
+            }, DELAY_HANDLER);
+
+
         }
     };
 
     private View.OnClickListener onClickOpenInfoDefensoria = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            showFragment();
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    showFragment();
+
+                }
+            }, DELAY_HANDLER);
+
         }
     };
     private View.OnClickListener onClickListenerCall = new View.OnClickListener() {
         @Override
-        public void onClick(View view) {
-            calll();
+        public void onClick(View v) {
+
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    call();
+                }
+            }, DELAY_HANDLER);
+
         }
     };
-    private void calll(){
+    private void showWebView(){
+        FormularioDenunciaMpf defensoriaFragment = new FormularioDenunciaMpf();
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, defensoriaFragment)
+                .commit();
 
-
+    }
+    private void call(){
             Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "180"));
             startActivity(intent);
-
-
     }
     @Override
     public String getTitle() {
