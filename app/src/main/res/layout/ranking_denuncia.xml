@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ripple="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:background="@color/background"
     android:layout_height="match_parent">
@@ -41,6 +42,13 @@
             android:gravity="center"
             android:orientation="vertical"
             android:background="@android:color/transparent">
+            <com.andexert.library.RippleView
+                android:id="@+id/more"
+                android:layout_width="?android:actionBarSize"
+                android:layout_height="?android:actionBarSize"
+                android:layout_toLeftOf="@+id/more2"
+                android:layout_margin="5dp"
+                ripple:rv_centered="true">
             <com.github.siyamed.shapeimageview.CircularImageView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
@@ -49,6 +57,7 @@
                 android:id="@+id/button_defensoria"
                 app:siBorderWidth="3dp"
                 app:siBorderColor="@color/c1"/>
+            </com.andexert.library.RippleView>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -66,6 +75,13 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
+            <com.andexert.library.RippleView
+                android:id="@+id/more_call"
+                android:layout_width="?android:actionBarSize"
+                android:layout_height="?android:actionBarSize"
+                android:layout_toLeftOf="@+id/more2"
+                android:layout_margin="5dp"
+                ripple:rv_centered="true">
             <com.github.siyamed.shapeimageview.CircularImageView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
@@ -74,6 +90,7 @@
                 android:id="@+id/button_click_call"
                 app:siBorderWidth="3dp"
                 app:siBorderColor="@color/green_denuncia"/>
+            </com.andexert.library.RippleView>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -91,7 +108,13 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
-
+            <com.andexert.library.RippleView
+                android:id="@+id/more_defensoria"
+                android:layout_width="?android:actionBarSize"
+                android:layout_height="?android:actionBarSize"
+                android:layout_toLeftOf="@+id/more2"
+                android:layout_margin="5dp"
+                ripple:rv_centered="true">
             <com.github.siyamed.shapeimageview.CircularImageView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
@@ -100,6 +123,7 @@
                 app:siBorderWidth="3dp"
                 android:id="@+id/button_ministerio"
                 app:siBorderColor="@color/c1"/>
+            </com.andexert.library.RippleView>
             <TextView
                 android:layout_width="match_parent"
                 android:gravity="center"

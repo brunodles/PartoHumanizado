@@ -9,12 +9,14 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.andexert.library.RippleView;
 import com.github.siyamed.shapeimageview.CircularImageView;
 import com.parse.ParseException;
 import com.parse.SaveCallback;
@@ -58,6 +60,8 @@ public class DenucieFragment extends BaseFragment {
     CircularImageView buttonMinisterioPublico;
     @InjectView(R.id.et_nome_casa_saude)
     EditText etCasaSaude;
+    @InjectView(R.id.more_call)
+    RippleView rippeCall;
 
     private final String TAG =  "PARTO-HUMANIZADO";
     private boolean itens[];
@@ -78,9 +82,10 @@ public class DenucieFragment extends BaseFragment {
 
         editTextIntervencoes.setOnClickListener(onClickIntervention);
         btSaveRelato.setOnClickListener(onclickSave);
-        buttonCallDenuncia.setOnClickListener(onClickListenerCall);
+      //  buttonCallDenuncia.setOnClickListener(onClickListenerCall);
         buttonDefensoria.setOnClickListener(onClickOpenInfoDefensoria);
         buttonMinisterioPublico.setOnClickListener(onClickOpenWebView);
+       // rippeCall.setOnClickListener(onClickListenerCall);
 
 
 

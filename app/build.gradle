@@ -55,4 +55,6 @@ dependencies {
       compile 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
     compile 'com.wrapp.floatlabelededittext:library:0.0.5'
     compile 'com.github.markushi:circlebutton:1.1'
+    // Riple Effect
+    compile 'com.github.traex.rippleeffect:library:1.2.2'
 }
