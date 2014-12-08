@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import br.com.PartoHumanizado.R;
 import br.com.PartoHumanizado.fragment.base.BaseFragment;
 import br.com.PartoHumanizado.fragment.base.ResStringArrayListFragment;
+import br.com.PartoHumanizado.fragment.base.TextFragment;
 import bruno.android.utils.adapter.FragmentPageAdapter;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -38,6 +39,9 @@ public class PlanoDePartoFragment extends BaseFragment {
         ButterKnife.inject(this, view);
 
         FragmentPageAdapter pageAdapter = new FragmentPageAdapter(getChildFragmentManager());
+
+        TextFragment sobreFragment = TextFragment.create("monteSeuPlanoDeParto.txt", "Monte seu plano de parto");
+        pageAdapter.addFragment(sobreFragment, sobreFragment.getTitle());
 
         addFragment(pageAdapter, new TrabalhoDePartoFragment());
         addFragment(pageAdapter, new DuranteParto());
