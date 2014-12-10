@@ -252,13 +252,18 @@ public class DenucieFragment extends BaseFragment {
     private void saveUf(){
 
         GpsClient gpsClient = new GpsClient(getActivity());
-        UsuarioPreferences usuarioPreferences = new UsuarioPreferences(getActivity());
-        if(usuarioPreferences.getUf().isEmpty()){
-            usuarioPreferences.setUf(gpsClient.getAddress().getAdminArea().substring(0,2).toUpperCase());
-           addDefensoria();
+        if(gpsClient.canGetLocation()){
+            UsuarioPreferences usuarioPreferences = new UsuarioPreferences(getActivity());
+            if(usuarioPreferences.getUf().isEmpty()){
+                usuarioPreferences.setUf(gpsClient.getAddress().getAdminArea().substring(0,2).toUpperCase());
+                addDefensoria();
+            }else{
+                addDefensoria();
+            }
         }else{
-            addDefensoria();
+            gpsClient.showSettingsAlert();
         }
+
 
 
 
