@@ -30,6 +30,7 @@ import android.widget.Toast;
 import com.andexert.library.RippleView;
 import com.github.siyamed.shapeimageview.CircularImageView;
 import com.parse.ParseException;
+import com.parse.ParseInstallation;
 import com.parse.SaveCallback;
 
 import java.util.ArrayList;
@@ -257,15 +258,23 @@ public class DenucieFragment extends BaseFragment {
             if(usuarioPreferences.getUf().isEmpty()){
                 usuarioPreferences.setUf(gpsClient.getAddress().getAdminArea().substring(0,2).toUpperCase());
                 addDefensoria();
+                updateUfInstalation();
             }else{
                 addDefensoria();
+                updateUfInstalation();
+
             }
         }else{
             gpsClient.showSettingsAlert();
         }
-
-
-
+    }
+    private void updateUfInstalation(){
+        UsuarioPreferences usuarioPreferences = new UsuarioPreferences(getActivity());
+        ParseInstallation parseInstallation= ParseInstallation.getCurrentInstallation();
+        if(parseInstallation.get("uf")==null){
+            parseInstallation.put("uf",usuarioPreferences.getUf());
+            parseInstallation.saveEventually();
+        }
 
     }
 
