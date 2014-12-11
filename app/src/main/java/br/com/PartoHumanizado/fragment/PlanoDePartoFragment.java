@@ -40,8 +40,8 @@ public class PlanoDePartoFragment extends BaseFragment {
 
         FragmentPageAdapter pageAdapter = new FragmentPageAdapter(getChildFragmentManager());
 
-        TextFragment sobreFragment = TextFragment.create("monteSeuPlanoDeParto.txt", "Monte seu plano de parto");
-        pageAdapter.addFragment(sobreFragment, sobreFragment.getTitle());
+//        TextFragment sobreFragment = TextFragment.create("monteSeuPlanoDeParto.txt", "Monte seu plano de parto");
+//        pageAdapter.addFragment(sobreFragment, sobreFragment.getTitle());
 
         addFragment(pageAdapter, new TrabalhoDePartoFragment());
         addFragment(pageAdapter, new DuranteParto());
