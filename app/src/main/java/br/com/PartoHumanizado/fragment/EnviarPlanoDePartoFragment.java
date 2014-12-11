@@ -11,7 +11,9 @@
 package br.com.PartoHumanizado.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.ArrayRes;
 import android.support.annotation.Nullable;
@@ -27,6 +29,7 @@ import br.com.PartoHumanizado.R;
 import br.com.PartoHumanizado.fragment.base.BaseFragment;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * Created by bruno on 06/12/14.
@@ -101,5 +104,18 @@ public class EnviarPlanoDePartoFragment extends BaseFragment {
             //Otherwise allow natural fragment lifecycle to call onResume
             onResume();
         }
+    }
+
+    @OnClick(R.id.enviar)
+    public void enviar() {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("message/rfc822");
+//        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_EMAIL, "");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Plano de Parto");
+        intent.putExtra(Intent.EXTRA_TEXT, texto.getText().toString());
+
+        startActivity(Intent.createChooser(intent, "Enviar email"));
+//        startActivity(intent);
     }
 }

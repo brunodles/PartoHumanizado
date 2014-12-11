@@ -31,6 +31,7 @@ import br.com.PartoHumanizado.R;
  * Created by bruno on 04/12/14.
  */
 public abstract class ResStringArrayListFragment extends BaseListFragment implements AdapterView.OnItemClickListener {
+    private static final String TAG = "ResStringArrayListFragment";
 
     private String[] stringArray;
     private String title;
@@ -87,8 +88,12 @@ public abstract class ResStringArrayListFragment extends BaseListFragment implem
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        boolean[] booleans = getCheckedBooleanArray();
-        outState.putBooleanArray(getTitle(), booleans);
+        try {
+            boolean[] booleans = getCheckedBooleanArray();
+            outState.putBooleanArray(getTitle(), booleans);
+        } catch (Exception e) {
+            Log.e(TAG, "onSaveInstanceState ", e);
+        }
     }
 
     private boolean[] getCheckedBooleanArray() {
@@ -120,13 +125,17 @@ public abstract class ResStringArrayListFragment extends BaseListFragment implem
     }
 
     private void saveChanges() {
-        FragmentActivity activity = getActivity();
-        SharedPreferences preferences = getSharedPreferences(activity);
-        SharedPreferences.Editor edit = preferences.edit();
-        boolean[] booleans = getCheckedBooleanArray();
-        for (int i = 0; i < booleans.length; i++)
-            edit.putBoolean(String.valueOf(i), booleans[i]);
-        edit.commit();
+        try {
+            FragmentActivity activity = getActivity();
+            SharedPreferences preferences = getSharedPreferences(activity);
+            SharedPreferences.Editor edit = preferences.edit();
+            boolean[] booleans = getCheckedBooleanArray();
+            for (int i = 0; i < booleans.length; i++)
+                edit.putBoolean(String.valueOf(i), booleans[i]);
+            edit.commit();
+        } catch (Exception e) {
+            Log.e(TAG, "saveChanges; error on save changes", e);
+        }
     }
 
     @Override
