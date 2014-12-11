@@ -19,7 +19,7 @@ import android.view.ViewGroup;
 
 import br.com.PartoHumanizado.R;
 import br.com.PartoHumanizado.fragment.base.BaseFragment;
-import br.com.PartoHumanizado.fragment.base.TextFragment;
+import br.com.PartoHumanizado.fragment.base.InformationFragment;
 import bruno.android.utils.adapter.FragmentPageAdapter;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -42,17 +42,17 @@ public class InformacoesFragment extends BaseFragment {
 
         FragmentPageAdapter pageAdapter = new FragmentPageAdapter(getChildFragmentManager());
 
-        addFragment(pageAdapter, TextFragment.create("partoHumanizado.txt", "Parto Humanizado"));
-        addFragment(pageAdapter, TextFragment.create("violenciaObstetrica.txt", "Violência Obstétrica"));
-        addFragment(pageAdapter, TextFragment.create("doulas.txt", "Doulas"));
-        addFragment(pageAdapter, TextFragment.create("planoDeParto.txt", "Plano de Parto"));
+        addFragment(pageAdapter, InformationFragment.create("partoHumanizado.txt", "Parto Humanizado"));
+        addFragment(pageAdapter, InformationFragment.create("violenciaObstetrica.txt", "Violência Obstétrica"));
+        addFragment(pageAdapter, InformationFragment.create("doulas.txt", "Doulas"));
+        addFragment(pageAdapter, InformationFragment.create("planoDeParto.txt", "Plano de Parto"));
 
         viewPager.setAdapter(pageAdapter);
 
         return view;
     }
 
-    private void addFragment(FragmentPageAdapter pageAdapter, TextFragment fragment) {
+    private void addFragment(FragmentPageAdapter pageAdapter, InformationFragment fragment) {
         pageAdapter.addFragment(fragment, fragment.getTitle());
     }
 

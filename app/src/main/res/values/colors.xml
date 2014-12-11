@@ -47,11 +47,11 @@
     <color name="accent">@color/c4</color>
     <color name="accent_dark">@color/b4</color>
 
-    <color name="background">@color/red1</color>
+    <color name="background">@color/white</color>
     <color name="pagerStripBackground">@color/a2_light</color>
     <color name="pagerStripText">@color/b2</color>
     <color name="listBackground">#ddd</color>
-    <color name="cardBackground">@color/red1</color>
+    <color name="cardBackground">@color/background</color>
 
     <color name="defaultTextColor">@color/b2</color>
 </resources>

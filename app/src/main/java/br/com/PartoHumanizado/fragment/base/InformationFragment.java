@@ -25,7 +25,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.IOException;
 import java.io.InputStream;
 
 import br.com.PartoHumanizado.R;
@@ -36,9 +35,9 @@ import butterknife.InjectView;
 /**
  * Created by bruno on 27/11/14.
  */
-public class TextFragment extends BaseFragment {
+public class InformationFragment extends BaseFragment {
 
-    private static final String TAG = "TextFragment";
+    private static final String TAG = "InformationFragment";
     public static final String KEY_ASSET_FILENAME = "KEY_ASSET_FILENAME";
 //    public static final String KEY_TITTLE = "KEY_TITTLE";
 
@@ -72,11 +71,15 @@ public class TextFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_text, null);
+        View view = inflater.inflate(R.layout.fragment_information, null);
         ButterKnife.inject(this, view);
         titulo.setText(tittleStr);
         texto.setText(Html.fromHtml(textStr));
-        new LoadImageAsyncTask(getActivity(), imageFile, image).execute();
+        if (imageFile != null && !imageFile.isEmpty()) {
+            new LoadImageAsyncTask(getActivity(), imageFile, image).execute();
+        } else {
+            image.setVisibility(View.GONE);
+        }
         return view;
     }
 
@@ -127,8 +130,8 @@ public class TextFragment extends BaseFragment {
         return menuTittle;
     }
 
-    public static final TextFragment create(String assetFileName, String menuTitle) {
-        TextFragment fragment = new TextFragment();
+    public static final InformationFragment create(String assetFileName, String menuTitle) {
+        InformationFragment fragment = new InformationFragment();
         fragment.menuTittle = menuTitle;
         Bundle bundle = new Bundle();
 //        bundle.putString(KEY_TITTLE, tittleStr);

@@ -32,10 +32,12 @@ public abstract class ResStringArrayListFragment extends BaseListFragment {
 
     private String[] stringArray;
     private String title;
+    private String preferencesFileName;
     private int stringArrayId;
 
-    public ResStringArrayListFragment(String title, @ArrayRes int stringArrayId) {
+    public ResStringArrayListFragment(String title, String preferencesFileName, @ArrayRes int stringArrayId) {
         this.title = title;
+        this.preferencesFileName = preferencesFileName;
         this.stringArrayId = stringArrayId;
     }
 
@@ -56,11 +58,15 @@ public abstract class ResStringArrayListFragment extends BaseListFragment {
         updateListView();
 
         FragmentActivity activity = getActivity();
-        SharedPreferences preferences = activity.getSharedPreferences(getTitle(), Context.MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences(activity);
         ListView listView = getListView();
 
         for (int i = 0; i < listView.getCount(); i++)
             listView.setItemChecked(i, preferences.getBoolean(String.valueOf(i), false));
+    }
+
+    private SharedPreferences getSharedPreferences(FragmentActivity activity) {
+        return activity.getSharedPreferences(preferencesFileName, Context.MODE_PRIVATE);
     }
 
     @Override
@@ -113,7 +119,7 @@ public abstract class ResStringArrayListFragment extends BaseListFragment {
     public void onStop() {
         super.onStop();
         FragmentActivity activity = getActivity();
-        SharedPreferences preferences = activity.getSharedPreferences(getTitle(), Context.MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences(activity);
         SharedPreferences.Editor edit = preferences.edit();
         boolean[] booleans = getCheckedBooleanArray();
         for (int i = 0; i < booleans.length; i++)

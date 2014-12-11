@@ -14,13 +14,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
 import br.com.PartoHumanizado.R;
 import br.com.PartoHumanizado.fragment.base.BaseFragment;
+import br.com.PartoHumanizado.fragment.base.InformationFragment;
 import br.com.PartoHumanizado.fragment.base.ResStringArrayListFragment;
-import br.com.PartoHumanizado.fragment.base.TextFragment;
 import bruno.android.utils.adapter.FragmentPageAdapter;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -29,6 +30,12 @@ import butterknife.InjectView;
  * Created by bruno on 04/12/14.
  */
 public class PlanoDePartoFragment extends BaseFragment {
+
+    public static final String PREFERENCES_FILE_CASO_CESAREA = "CasoCesarea";
+    public static final String PREFERENCES_FILE_CUIDADOS_COM_BEBE = "cuidadosComBebe";
+    public static final String PREFERENCES_FILE_POS_PARTO = "posParto";
+    public static final String PREFERENCES_FILE_PARTO = "parto";
+    public static final String PREFERENCES_FILE_TRABALHO_DE_PARTO = "trabalhoDeParto";
 
     @InjectView(R.id.viewPager)
     ViewPager viewPager;
@@ -40,14 +47,17 @@ public class PlanoDePartoFragment extends BaseFragment {
 
         FragmentPageAdapter pageAdapter = new FragmentPageAdapter(getChildFragmentManager());
 
-//        TextFragment sobreFragment = TextFragment.create("monteSeuPlanoDeParto.txt", "Monte seu plano de parto");
-//        pageAdapter.addFragment(sobreFragment, sobreFragment.getTitle());
+        InformationFragment sobreFragment = InformationFragment.create("monteSeuPlanoDeParto.txt", "Monte seu plano de parto");
+        pageAdapter.addFragment(sobreFragment, sobreFragment.getTitle());
 
         addFragment(pageAdapter, new TrabalhoDePartoFragment());
         addFragment(pageAdapter, new DuranteParto());
         addFragment(pageAdapter, new PosParto());
         addFragment(pageAdapter, new CuidadosComBebe());
         addFragment(pageAdapter, new CasoCesarea());
+
+        EnviarPlanoDePartoFragment enviarPlanoDePartoFragment = new EnviarPlanoDePartoFragment();
+        pageAdapter.addFragment(enviarPlanoDePartoFragment, enviarPlanoDePartoFragment.getTitle());
 
         viewPager.setAdapter(pageAdapter);
 
@@ -67,35 +77,35 @@ public class PlanoDePartoFragment extends BaseFragment {
     public static class TrabalhoDePartoFragment extends ResStringArrayListFragment {
 
         public TrabalhoDePartoFragment() {
-            super("Trabalho de Parto", R.array.trabalhoDeParto);
+            super("Trabalho de Parto", PREFERENCES_FILE_TRABALHO_DE_PARTO, R.array.trabalhoDeParto);
         }
     }
 
     public static class DuranteParto extends ResStringArrayListFragment {
 
         public DuranteParto() {
-            super("Durante o Parto", R.array.duranteParto);
+            super("Durante o Parto", PREFERENCES_FILE_PARTO, R.array.duranteParto);
         }
     }
 
     public static class PosParto extends ResStringArrayListFragment {
 
         public PosParto() {
-            super("Pós-Parto", R.array.posParto);
+            super("Pós-Parto", PREFERENCES_FILE_POS_PARTO, R.array.posParto);
         }
     }
 
     public static class CuidadosComBebe extends ResStringArrayListFragment {
 
         public CuidadosComBebe() {
-            super("Cuidados com o Bebê", R.array.cuidadosComBebe);
+            super("Cuidados com o Bebê", PREFERENCES_FILE_CUIDADOS_COM_BEBE, R.array.cuidadosComBebe);
         }
     }
 
     public static class CasoCesarea extends ResStringArrayListFragment {
 
         public CasoCesarea() {
-            super("Caso de Cesárea", R.array.casoCesarea);
+            super("Caso de Cesárea", PREFERENCES_FILE_CASO_CESAREA, R.array.casoCesarea);
         }
     }
 }

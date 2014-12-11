@@ -10,14 +10,95 @@
 
 package br.com.PartoHumanizado.fragment;
 
-import br.com.PartoHumanizado.fragment.base.BaseListFragment;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.support.annotation.ArrayRes;
+import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
+import android.text.Html;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import br.com.PartoHumanizado.R;
+import br.com.PartoHumanizado.fragment.base.BaseFragment;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 /**
  * Created by bruno on 06/12/14.
  */
-public class EnviarPlanoDePartoFragment extends BaseListFragment {
+public class EnviarPlanoDePartoFragment extends BaseFragment {
+
+    @InjectView(R.id.texto)
+    TextView textView;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_enviar_plano_de_parto, null);
+        ButterKnife.inject(this, view);
+        return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateText();
+    }
+
+    private void updateText() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(getText("Trabalho de Parto", PlanoDePartoFragment.PREFERENCES_FILE_TRABALHO_DE_PARTO, R.array.trabalhoDeParto))
+                .append(getText("Durante o Parto", PlanoDePartoFragment.PREFERENCES_FILE_PARTO, R.array.duranteParto))
+                .append(getText("Pós-Parto", PlanoDePartoFragment.PREFERENCES_FILE_POS_PARTO, R.array.posParto))
+                .append(getText("Cuidados com o Bebê", PlanoDePartoFragment.PREFERENCES_FILE_CUIDADOS_COM_BEBE, R.array.cuidadosComBebe))
+                .append(getText("Caso de Cesárea", PlanoDePartoFragment.PREFERENCES_FILE_CASO_CESAREA, R.array.casoCesarea))
+        ;
+
+        textView.setText(Html.fromHtml(builder.toString()));
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        updateText();
+    }
+
+    private StringBuilder getText(String tittle, String preferencesFileName, @ArrayRes int stringArrayId) {
+        FragmentActivity activity = getActivity();
+
+        String[] stringArray = activity.getResources().getStringArray(stringArrayId);
+        SharedPreferences preferences = activity.getSharedPreferences(preferencesFileName, Context.MODE_PRIVATE);
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder
+                .append("<br/><b>")
+                .append(tittle)
+                .append("</b><br/>");
+
+        for (int i = 0; i < stringArray.length; i++)
+            if (preferences.getBoolean(String.valueOf(i), false))
+                stringBuilder.append(stringArray[i])
+                        .append("<br/>");
+
+        return stringBuilder;
+    }
+
     @Override
     public String getTitle() {
-        return "Enviar plano de parto";
+        return "Resultado";
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean visible) {
+        super.setUserVisibleHint(visible);
+        if (visible && isResumed()) {
+            //Only manually call onResume if fragment is already visible
+            //Otherwise allow natural fragment lifecycle to call onResume
+            onResume();
+        }
     }
 }

@@ -11,5 +11,6 @@
     android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
     android:paddingRight="?android:attr/listPreferredItemPaddingRight"
     android:textAppearance="?android:attr/textAppearanceListItemSmall"
+    android:background="@color/background"
     android:textSize="18sp" /><!--android:checkMark="?android:attr/textCheckMark"-->
     <!--android:background="@color/background_item_plano_de_parto"-->
