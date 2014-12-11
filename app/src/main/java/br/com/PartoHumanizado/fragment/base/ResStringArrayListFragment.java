@@ -17,9 +17,11 @@ import android.os.Bundle;
 import android.support.annotation.ArrayRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -28,7 +30,7 @@ import br.com.PartoHumanizado.R;
 /**
  * Created by bruno on 04/12/14.
  */
-public abstract class ResStringArrayListFragment extends BaseListFragment {
+public abstract class ResStringArrayListFragment extends BaseListFragment implements AdapterView.OnItemClickListener {
 
     private String[] stringArray;
     private String title;
@@ -56,6 +58,7 @@ public abstract class ResStringArrayListFragment extends BaseListFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         updateListView();
+        getListView().setOnItemClickListener(this);
 
         FragmentActivity activity = getActivity();
         SharedPreferences preferences = getSharedPreferences(activity);
@@ -67,11 +70,6 @@ public abstract class ResStringArrayListFragment extends BaseListFragment {
 
     private SharedPreferences getSharedPreferences(FragmentActivity activity) {
         return activity.getSharedPreferences(preferencesFileName, Context.MODE_PRIVATE);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
     }
 
     private void updateListView() {
@@ -116,8 +114,12 @@ public abstract class ResStringArrayListFragment extends BaseListFragment {
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
+    public void onPause() {
+        super.onPause();
+        saveChanges();
+    }
+
+    private void saveChanges() {
         FragmentActivity activity = getActivity();
         SharedPreferences preferences = getSharedPreferences(activity);
         SharedPreferences.Editor edit = preferences.edit();
@@ -130,5 +132,10 @@ public abstract class ResStringArrayListFragment extends BaseListFragment {
     @Override
     public String getTitle() {
         return title;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        saveChanges();
     }
 }

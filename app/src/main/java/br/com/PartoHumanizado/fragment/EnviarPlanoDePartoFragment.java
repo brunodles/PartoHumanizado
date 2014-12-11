@@ -34,7 +34,7 @@ import butterknife.InjectView;
 public class EnviarPlanoDePartoFragment extends BaseFragment {
 
     @InjectView(R.id.texto)
-    TextView textView;
+    TextView texto;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,6 +50,7 @@ public class EnviarPlanoDePartoFragment extends BaseFragment {
     }
 
     private void updateText() {
+
         StringBuilder builder = new StringBuilder();
         builder.append(getText("Trabalho de Parto", PlanoDePartoFragment.PREFERENCES_FILE_TRABALHO_DE_PARTO, R.array.trabalhoDeParto))
                 .append(getText("Durante o Parto", PlanoDePartoFragment.PREFERENCES_FILE_PARTO, R.array.duranteParto))
@@ -58,7 +59,7 @@ public class EnviarPlanoDePartoFragment extends BaseFragment {
                 .append(getText("Caso de Cesárea", PlanoDePartoFragment.PREFERENCES_FILE_CASO_CESAREA, R.array.casoCesarea))
         ;
 
-        textView.setText(Html.fromHtml(builder.toString()));
+        texto.setText(Html.fromHtml(builder.toString()));
     }
 
     @Override
